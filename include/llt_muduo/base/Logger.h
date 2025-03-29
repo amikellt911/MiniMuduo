@@ -2,14 +2,13 @@
 
 #include <atomic>
 #include <string>
-
+#include <fstream>
 #include "noncopyable.h"
 
 namespace llt_muduo
 {
 
-namespace Logger
-{
+
 enum class LogLevel
 {
     DEBUG,
@@ -24,7 +23,10 @@ public:
     Logger();
     ~Logger();
 
-    static Logger& instance();
+    static Logger& instance(){
+        static Logger instance_;
+        return instance_;
+    }
 
     void setGlobalLogLevel(LogLevel level);
 
@@ -36,9 +38,12 @@ public:
 private:
     LogLevel globalLogLevel_;
     std::atomic_flag logLock_;
+    std::ofstream logFile_;
+    std::string logFilePath_;
+    std::string logFileName_;
 };
 
-}//namespace Logger
+
 }//namespace llt_muduo
 
 #define LOG_DEBUG(msg) \
