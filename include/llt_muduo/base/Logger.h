@@ -67,7 +67,7 @@ namespace llt_muduo
             llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::INFO); \
         }                                                                                  \
     } while (0)
-
+//普通错误，整体可控，虽然有bug
 #define LOG_ERROR(msg)                                                                      \
     do                                                                                      \
     {                                                                                       \
@@ -76,7 +76,7 @@ namespace llt_muduo
             llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::ERROR); \
         }                                                                                   \
     } while (0)
-
+//致命错误，会影响核心功能
 #define LOG_FATAL(msg)                                                                      \
     do                                                                                      \
     {                                                                                       \
