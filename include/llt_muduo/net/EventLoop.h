@@ -1,70 +1,85 @@
 #pragma once
-
-#include<functional>
-#include<vector>
-#include<atomic>
-#include<memory>
-#include<mutex>
-
-#include "llt_muduo/base/Timestamp.h"
 #include "llt_muduo/base/noncopyable.h"
+#include "llt_muduo/base/Logger.h"
+#include "llt_muduo/base/Timestamp.h"
 #include "llt_muduo/base/CurrentThread.h"
 
-namespace llt_muduo{
+#include <vector>
+#include <map>
+#include <memory>
+#include <functional>
+#include <atomic>
+namespace llt_muduo
+{
     namespace net
     {
+
         class Channel;
         class Poller;
-        class EventLoop:base::noncopyable{
-            public:
-                using Functor = std::function<void()>;
+        class EventLoop : base::noncopyable
+        {
+        public:
+            using Functor = std::function<void()>;
 
-                EventLoop();
-                ~EventLoop();
+            EventLoop();
+            ~EventLoop();
 
-                void loop();
-                void quit();
+            void loop();
+            void quit();
 
-                base::Timestamp pollReturnTime() const{return pollReturnTime_;}
+            void runInLoop(Functor &&cb);
+            void queueInLoop(Functor &&cb);
 
-                void runInLoop(Functor cb);
+            void wakeup();
 
-                void queueInLoop(Functor cb);
+            void updateChannel(Channel *channel);
+            void removeChannel(Channel *channel);
 
-                void wakeup();
+            void assertInLoopThread() const { assert(isInLoopThread()) };
 
-                void updateChannel(Channel *channel);
-                void removeChannel(Channel *channel);
-                bool hasChannel(Channel *channel);
+            bool isInLoopThread() const { return threadId_ == CurrentThread::tid(); }
 
-                bool isInLoopThread() const {return threadId_ == llt_muduo::base::CurrentThread::tid();}
-            
-            private:
-                base::Timestamp pollReturnTime_;
+        private:
+            void handleRead();
+            void doPendingFunctors();
 
-                const pid_t threadId_;
+        private:
+            using ChannelList = std::vector<Channel *>;
+            // 是否需要shared_ptr？
+            // 不需要，我们只是观察，不是共享和拥有
+            using ChannelMap = std::map<int, Channel *>;
 
-                void handleRead();
-                void doPendingFunctors();
+            std::atomic_bool looping_;
+            std::atomic_bool quit_;
+            std::atomic_bool callingPendingFunctors_;
+            // 断言或调试有用，是一个好习惯
+            std::atomic_bool eventHandling_;
 
-                using ChannelList = std::vector<Channel*>;
-                ChannelList activeChannels_;
-                
-                std::unique_ptr<Poller> poller_;
-                std::unique_ptr<Channel> wakeupChannel_;
+            // 我也不知道要不要这个，自动补全帮我生成的，感觉好像是需要的陈硕的书好像也讲了，好像是记录时间，计算效率的
+            // 用于记录poll返回时间，并将其传给Channel的handEvent()
+            base::Timestamp pollReturnTime_;
 
-                std::atomic_bool callingPendingFunctors_;
-                std::vector<Functor> pendingFunctors_;
-                std::mutex mutex_;
+            // Poller
+            std::unique_ptr<Poller> poller_;
+            // 等待队列
+            std::vector<Functor> pendingFunctors_;
+            // 唤醒机制
+            std::unique_ptr<Channel> wakeupChannel_;
+            // 是否需要？需要，因为是要先创建该fd，再创建Channel
+            int wakeupFd_;
 
-                std::atomic_bool looping_;
-                std::atomic_bool quit_;
-                
-                
-                
+            // 线程id，是否需要，每次assert直接使用CurrentThread::tid(),还是保存一个？应该不需要吧
+            // 需要,因为assert需要频繁调用，频繁调用函数CurrentThread::tid()，不如直接保存
+            const pid_t threadId_;
+
+            // Channel队列,便于Poller管理
+            ChannelList activeChannels_;
+            // Channel映射表，便于查找Channel
+            ChannelMap channels_;
+
+            // 锁，保证等待队列在queueinLoop的安全
+            std::mutex mutex_;
         };
 
-
     } // namespace net
-    
-}
+} // namespace llt_muduo

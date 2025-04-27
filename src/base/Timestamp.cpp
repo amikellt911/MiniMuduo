@@ -3,6 +3,7 @@
 #include "llt_muduo/base/Timestamp.h"
 namespace llt_muduo
 {
+    namespace base{
     Timestamp::Timestamp() : microSecondsSinceEpoch_(0)
     {
     }
@@ -28,5 +29,6 @@ namespace llt_muduo
                  tm_time->tm_min,
                  tm_time->tm_sec);
         return buf;
+    }
     }
 }

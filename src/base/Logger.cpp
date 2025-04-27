@@ -6,6 +6,7 @@
 #include <sstream>
 #include "llt_muduo/base/CurrentThread.h"
 namespace llt_muduo{    
+    namespace base{
     Logger::Logger(){
         globalLogLevel_ = LogLevel::INFO;
         logLock_.clear();
@@ -57,5 +58,6 @@ namespace llt_muduo{
         logFile_ << logMessage;
         logFile_.flush();
         logLock_.clear(std::memory_order_release);
+    }
     }
 }

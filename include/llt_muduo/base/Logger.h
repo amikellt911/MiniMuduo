@@ -50,36 +50,38 @@ namespace llt_muduo
 
 } // namespace llt_muduo
 
-#define LOG_DEBUG(msg)                                                     \
-    do                                                                     \
-    {                                                                      \
-        if (Logger::Logger::instance().shouldLog(Logger::LogLevel::DEBUG)) \
-        {                                                                  \
-            Logger::Logger::instance().log(msg, Logger::LogLevel::DEBUG);  \
-        }                                                                  \
+#define LOG_DEBUG(msg)                                                                      \
+    do                                                                                      \
+    {                                                                                       \
+        if (llt_muduo::base::Logger::instance().shouldLog(llt_muduo::base::LogLevel::DEBUG)) \
+        {                                                                                   \
+            llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::DEBUG); \
+        }                                                                                   \
     } while (0)
 
-#define LOG_INFO(msg)                                                     \
-    do                                                                    \
-    {                                                                     \
-        if (Logger::Logger::instance().shouldLog(Logger::LogLevel::INFO)) \
-        {                                                                 \
-            Logger::Logger::instance().log(msg, Logger::LogLevel::INFO);  \
-        }                                                                 \
+#define LOG_INFO(msg)                                                                      \
+    do                                                                                     \
+    {                                                                                      \
+        if (llt_muduo::base::Logger::instance().shouldLog(llt_muduo::base::LogLevel::INFO)) \
+        {                                                                                  \
+            llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::INFO); \
+        }                                                                                  \
     } while (0)
-#define LOG_ERROR(msg)                                                     \
-    do                                                                     \
-    {                                                                      \
-        if (Logger::Logger::instance().shouldLog(Logger::LogLevel::ERROR)) \
-        {                                                                  \
-            Logger::Logger::instance().log(msg, Logger::LogLevel::ERROR);  \
-        }                                                                  \
+
+#define LOG_ERROR(msg)                                                                      \
+    do                                                                                      \
+    {                                                                                       \
+        if (llt_muduo::base::Logger::instance().shouldLog(llt_muduo::base::LogLevel::ERROR)) \
+        {                                                                                   \
+            llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::ERROR); \
+        }                                                                                   \
     } while (0)
-#define LOG_FATAL(msg)                                                     \
-    do                                                                     \
-    {                                                                      \
-        if (Logger::Logger::instance().shouldLog(Logger::LogLevel::FATAL)) \
-        {                                                                  \
-            Logger::Logger::instance().log(msg, Logger::LogLevel::FATAL);  \
-        }                                                                  \
+
+#define LOG_FATAL(msg)                                                                      \
+    do                                                                                      \
+    {                                                                                       \
+        if (llt_muduo::base::Logger::instance().shouldLog(llt_muduo::base::LogLevel::FATAL)) \
+        {                                                                                   \
+            llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::FATAL); \
+        }                                                                                   \
     } while (0)

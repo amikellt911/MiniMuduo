@@ -1,6 +1,7 @@
 #include "llt_muduo/base/CurrentThread.h"
 
 namespace llt_muduo{
+    namespace base{
     namespace CurrentThread{
         __thread int t_cachedTid = 0;
 
@@ -8,6 +9,7 @@ namespace llt_muduo{
             if(t_cachedTid == 0){
                 t_cachedTid = static_cast<pid_t>(::syscall(SYS_gettid));
         }
+    }
     }
     }
 }
