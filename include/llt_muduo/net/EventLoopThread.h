@@ -5,7 +5,8 @@
 #include <condition_variable>
 
 #include "llt_muduo/base/noncopyable.h"
-#include "Thread.h"
+#include "llt_muduo/net/Thread.h"
+#include "llt_muduo/net/EventLoop.h"
 
 namespace llt_muduo
 {
@@ -13,7 +14,7 @@ namespace llt_muduo
     {
         
         class EventLoop;
-        class EventLoopThread : noncopyable
+        class EventLoopThread : llt_muduo::base::noncopyable
         {
             public:
                 using ThreadInitCallback = std::function<void(EventLoop*)>;

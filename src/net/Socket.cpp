@@ -2,7 +2,9 @@
 #include"Socket.h"
 #include"InetAddress.h"
 #include"llt_muduo/base/Logger.h"
-
+#include "unistd.h"
+#include "string.h"
+#include <netinet/tcp.h>
 namespace llt_muduo {
     namespace net {
         Socket::~Socket(){

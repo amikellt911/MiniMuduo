@@ -1,5 +1,5 @@
-#include "EventLoopThread.h"
-#include "EventLoop.h"
+#include "llt_muduo/net/EventLoopThread.h"
+#include "llt_muduo/net/EventLoop.h"
 
 namespace llt_muduo
 {
@@ -32,7 +32,7 @@ namespace llt_muduo
               EventLoop *loop = nullptr;
               {
                 std::unique_lock<std::mutex> lock(mutex_);
-                cond.wait(lock, [this](){
+                cond_.wait(lock, [this](){
                     return loop_ != nullptr;
                 });
                 loop = loop_;

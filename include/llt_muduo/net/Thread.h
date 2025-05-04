@@ -4,13 +4,15 @@
 #include<memory>
 #include<thread>
 #include<condition_variable>
+#include<string>
+#include<atomic>
 #include "llt_muduo/base/noncopyable.h"
 
 namespace llt_muduo
 {
     namespace net
     {
-        class Thread:noncopyable{
+        class Thread:llt_muduo::base::noncopyable{
             public:
                 using ThreadFunc=std::function<void()>;
                 //防止隐式类型转换，增加代码可读性，是良好的编程实践
@@ -49,6 +51,6 @@ namespace llt_muduo
 
                 std::mutex mutex_;
                 std::condition_variable cond_;
-        }
+        };
     }
 }

@@ -1,5 +1,5 @@
-#include "EventLoopThreadPool.h"
-#include "EventLoopThread.h"
+#include "llt_muduo/net/EventLoopThreadPool.h"
+#include "llt_muduo/net/EventLoopThread.h"
 #include "llt_muduo/base/Logger.h"
 
 namespace llt_muduo{
@@ -8,7 +8,7 @@ namespace llt_muduo{
                 :baseLoop_(baseLoop),
                  name_(nameArg),
                  started_(false),
-                 numThreads_(0),
+                 numThreads(0),
                  next_(0){
             assert(baseLoop != nullptr);
         }
@@ -21,7 +21,7 @@ namespace llt_muduo{
             assert(!started_);
             started_ = true;
 
-            for(int i = 0; i < numThreads_; ++i){
+            for(int i = 0; i < numThreads; ++i){
                 char buf[name_.size() + 32];
                 snprintf(buf, sizeof buf, "%s%d", name_.c_str(), i);
                 EventLoopThread *t = new EventLoopThread(cb, buf);
@@ -29,7 +29,7 @@ namespace llt_muduo{
                 loops_.push_back(t->startLoop());
             }
             //如果只有baseLoop_，则直接调用回调函数
-            if(numThreads_ == 0 && cb){
+            if(numThreads == 0 && cb){
                 cb(baseLoop_);
             }
         }

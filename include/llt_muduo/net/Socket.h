@@ -6,7 +6,7 @@ namespace llt_muduo {
     namespace net { 
         class InetAddress;
 
-        class Socket : noncopyable{
+        class Socket : llt_muduo::base::noncopyable{
             public:
                 explicit Socket(int sockfd)
                     : sockfd_(sockfd)
@@ -29,7 +29,7 @@ namespace llt_muduo {
             
             private:
                 const int sockfd_;
-        }
+        };
     }
 
 }

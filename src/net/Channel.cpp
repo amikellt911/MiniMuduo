@@ -27,7 +27,7 @@ namespace llt_muduo{
         void Channel::remove(){
             loop_->removeChannel(this);
         }
-        void Channel::handleEvent(base::Timestamp receiveTime){
+        void Channel::handleEvent(llt_muduo::base::Timestamp receiveTime){
             if(tied_){
                 std::shared_ptr<void> guard = tie_.lock();
                 if(guard){
@@ -42,7 +42,7 @@ namespace llt_muduo{
         }
     }
 
-    void Channel::handleEventWithGuard(base::Timestamp receiveTime){
+    void Channel::handleEventWithGuard(llt_muduo::base::Timestamp receiveTime){
         LOG_INFO("channel handleEvent revents:"+ std::to_string(revents_) + " fd:" + std::to_string(fd_));
         //当对端关闭，并且读端关闭（没有数据可读，通常对端关闭，但是如果还有数据，还是会标记为读，等到读完，才会标记为关闭）
         if((revents_ & EPOLLHUP)&&!(revents_ & EPOLLIN)){

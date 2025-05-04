@@ -13,16 +13,16 @@ namespace llt_muduo
 
         class EventLoop;//前向声明
 
-        class Channel:base::noncopyable{
+        class Channel:llt_muduo::base::noncopyable{
             public:
                 using EventCallback=std::function<void()>;
-                using ReadEventCallback = std::function<void(base::Timestamp)>;
+                using ReadEventCallback = std::function<void(llt_muduo::base::Timestamp)>;
 
                 Channel(EventLoop* loop,int sockfd);
 
                 ~Channel();
 
-                void handleEvent(base::Timestamp receiveTime);
+                void handleEvent(llt_muduo::base::Timestamp receiveTime);
 
                 void setReadCallback(ReadEventCallback cb){readCallback_=std::move(cb);}
 
@@ -87,7 +87,7 @@ namespace llt_muduo
 
                 void update();
 
-                void handleEventWithGuard(base::Timestamp receiveTime);
+                void handleEventWithGuard(llt_muduo::base::Timestamp receiveTime);
 
                 static const int kNoneEvent;
                 

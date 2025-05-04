@@ -1,6 +1,6 @@
 #include"llt_muduo/net/Thread.h"
 #include"llt_muduo/base/CurrentThread.h"
-
+#include<assert.h>
 namespace llt_muduo{
     namespace net{
         //static和extern必须要声明类型
@@ -36,15 +36,15 @@ namespace llt_muduo{
             thread_ = std::shared_ptr<std::thread>(new std::thread([&]() {
                 {
                     std::lock_guard<std::mutex> lock(mutex_);
-                    tid_ = CurrentThread::tid();
+                    tid_ = llt_muduo::base::CurrentThread::tid();
                 }                               
-                cv_.notify_one();
+                cond_.notify_one();
                 func_();                     
             }));
 
             {
                 std::unique_lock<std::mutex> lock(mutex_);
-                cv.wait(lock, [&]() { return tid_ != 0; });
+                cond_.wait(lock, [&]() { return tid_ != 0; });
             }
             
         }

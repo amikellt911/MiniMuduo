@@ -12,14 +12,14 @@ namespace llt_muduo
         class Channel;
         class EventLoop;
 
-        class Poller:base::noncopyable{
+        class Poller:llt_muduo::base::noncopyable{
             public:
                 using ChannelList = std::vector<Channel*>;
 
                 Poller(EventLoop *loop);
                 virtual ~Poller()=default;
 
-                virtual base::Timestamp poll(int timeoutMs,ChannelList *activeChannels)=0;
+                virtual llt_muduo::base::Timestamp poll(int timeoutMs,ChannelList *activeChannels)=0;
                 virtual void updateChannel(Channel *channel)=0;
                 virtual void removeChannel(Channel *Channel)=0;
 

@@ -1,10 +1,10 @@
 #include <errno.h>
 #include <unistd.h>
-#include <string.h>
-
-#include "EPollPoller.h"
-#include "base/Logger.h"
-#include "Channel.h"
+#include <string.h>//strerror
+#include <string>
+#include "llt_muduo/net/EPollPoller.h"
+#include "llt_muduo/base/Logger.h"
+#include "llt_muduo/net/Channel.h"
 
 namespace llt_muduo
 {
@@ -21,7 +21,8 @@ namespace llt_muduo
         {
             if (epollfd_ < 0)
             {
-                LOG_FATAL("EPollPoller::EPollPoller" + ::strerror(errno));
+                //正常的""是const char*，是指针，相加并不会字符串拼接，不会得到你想要的结果
+                LOG_FATAL(std::string("EPollPoller::EPollPoller: ") + ::strerror(errno));
             }
         }
 
@@ -30,17 +31,17 @@ namespace llt_muduo
             ::close(epollfd_);
         }
 
-        Timestamp EPollPoller::poll(int timeoutMs, ChannelList *activeChannels)
+        llt_muduo::base::Timestamp EPollPoller::poll(int timeoutMs, ChannelList *activeChannels)
         {
-            LOG_DEBUG("poll " + "fd total count:" + std::to_string(channels_.size()));
+            LOG_DEBUG(std::string("poll ") + "fd total count:" + std::to_string(channels_.size()));
 
             int numEvents = ::epoll_wait(epollfd_, &*events_.begin(), static_cast<int>(events_.size()), timeoutMs);
             int saveErrno = errno;
-            Timestamp now(Timestamp::now());
+            llt_muduo::base::Timestamp now(llt_muduo::base::Timestamp::now());
 
             if (numEvents > 0)
             {
-                LOG_DEBUG("EPollPoller::poll " + "fd total count:" + std::to_string(numEvents));
+                LOG_DEBUG(std::string("EPollPoller::EPollPoller: ") + "fd total count:" + std::to_string(numEvents));
                 fillActiveChannels(numEvents, activeChannels);
                 if (numEvents == events_.size())
                 {
@@ -125,11 +126,11 @@ namespace llt_muduo
             {
                 //如果无法删除，最坏的情况是还在错误的监听一个我们不想要对fd，但是整个程序还是可以正常运行的
                 if(operation==EPOLL_CTL_DEL){
-                    LOG_ERROR("epoll_ctl del"+::strerror(errno));
+                    LOG_ERROR(std::string("epoll_ctl del")+::strerror(errno));
                 }
                 //如果无法添加监控或者修改监控，那么事件驱动模型的核心功能都无法保证
                 else{
-                    LOG_FATAL("epoll_ctl add/mod"+::strerror(errno));
+                    LOG_FATAL(std::string("epoll_ctl add/mod")+::strerror(errno));
 
                 }
             }

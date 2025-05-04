@@ -14,7 +14,7 @@ namespace llt_muduo
     {
         class EventLoop;
         class EventLoopThread;
-        class EventLoopThreadPool : noncopyable
+        class EventLoopThreadPool : llt_muduo::base::noncopyable
         {
             public:
                 //server传递的回调,server调用start，会调用pool的start，然后pool创建nums个线程（EventLoopThread）,new的时候传入回调，然后在Thread调用threadFunc时调用回调

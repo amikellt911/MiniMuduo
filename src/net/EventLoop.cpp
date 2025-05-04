@@ -1,7 +1,7 @@
 #include "llt_muduo/net/EventLoop.h"
 #include "llt_muduo/net/Channel.h"
 #include "llt_muduo/net/Poller.h"
-
+#include "sys/eventfd.h"
 namespace llt_muduo
 {
     namespace net
@@ -25,13 +25,13 @@ namespace llt_muduo
                                  quit_(false),
                                  eventHandling_(false),
                                  callingPendingFunctors_(false),
-                                 threadId_(CurrentThread::tid()),
+                                 threadId_(llt_muduo::base::CurrentThread::tid()),
                                  wakeupFd_(createEventfd()),
                                  wakeupChannel_(new Channel(this, wakeupFd_)),
                                  poller_(Poller::newDefaultPoller(this))
         //,pollReturnTime_(Timestamp::now())
         {
-            string msg = "EventLoop created " + std::to_string(threadId_);
+            std::string msg = "EventLoop created " + std::to_string(threadId_);
             LOG_DEBUG(msg);
             if (t_LoopInThisThread)
             {
