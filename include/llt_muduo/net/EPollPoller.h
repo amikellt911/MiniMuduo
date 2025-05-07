@@ -24,7 +24,7 @@ namespace llt_muduo
             private:
                 static const int kInitEventListSize = 16;
 
-                void fillActiveChannels(int numEvents,ChannelList *activeChannels) const;
+                void fillActiveChannels(int numEvents,ChannelList *activeChannels);
                 void update(int operation,Channel *channel);
 
                 using EventList = std::vector<epoll_event>;

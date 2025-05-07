@@ -12,6 +12,16 @@ namespace llt_muduo
         const int kPollTimeMs = 10000;
         // 先想一想构造和析构函数
 
+        static int createEventfd()
+        {
+            int evtfd = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
+            if (evtfd < 0)
+            {
+                LOG_FATAL("Failed in eventfd" + std::to_string(errno));
+            }
+            return evtfd;
+        }
+
         // 1.构造函数，想想需要构造哪些东西？
         // 4个bool类型变量，都初始化为false
         // pollReturnTime_默认初始化，或者不写好像也行，自动就初始化了
@@ -26,6 +36,8 @@ namespace llt_muduo
                                  eventHandling_(false),
                                  callingPendingFunctors_(false),
                                  threadId_(llt_muduo::base::CurrentThread::tid()),
+                                 //初始化列表的初始化顺序和写的顺序无关
+                                 //和变量声明顺序有关，因为反了，导致wakeupChannel初始化时，wakeupFd还未初始化，导致错误·
                                  wakeupFd_(createEventfd()),
                                  wakeupChannel_(new Channel(this, wakeupFd_)),
                                  poller_(Poller::newDefaultPoller(this))
@@ -61,16 +73,6 @@ namespace llt_muduo
             // 先别写，想想有没有什么线程安全等问题？
             //  string msg = "EventLoop " + std::to_string(threadId_) + " destructs";
             //  LOG_DEBUG(msg);
-        }
-
-        int createEventfd()
-        {
-            int evtfd = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
-            if (evtfd < 0)
-            {
-                LOG_FATAL("Failed in eventfd" + std::to_string(errno));
-            }
-            return evtfd;
         }
 
         void EventLoop::loop()

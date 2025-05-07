@@ -66,7 +66,12 @@
         "format": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "cerrno": "cpp"
+        "cerrno": "cpp",
+        "cstring": "cpp",
+        "bitset": "cpp",
+        "complex": "cpp",
+        "list": "cpp",
+        "typeindex": "cpp"
     },
     "github.copilot.enable": {
         "*": false,

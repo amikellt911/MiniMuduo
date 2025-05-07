@@ -31,6 +31,7 @@ namespace llt_muduo
                 append(extraBuf,n-writable);
 
             }
+            return n;
         }
 
         size_t Buffer::writeFd(int fd,int* saveErrno)

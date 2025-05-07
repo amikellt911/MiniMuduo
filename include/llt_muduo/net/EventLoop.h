@@ -65,10 +65,11 @@ namespace llt_muduo
             std::unique_ptr<Poller> poller_;
             // 等待队列
             std::vector<Functor> pendingFunctors_;
-            // 唤醒机制
-            std::unique_ptr<Channel> wakeupChannel_;
             // 是否需要？需要，因为是要先创建该fd，再创建Channel
             int wakeupFd_;
+
+            // 唤醒机制
+            std::unique_ptr<Channel> wakeupChannel_;
 
             // 线程id，是否需要，每次assert直接使用CurrentThread::tid(),还是保存一个？应该不需要吧
             // 需要,因为assert需要频繁调用，频繁调用函数CurrentThread::tid()，不如直接保存

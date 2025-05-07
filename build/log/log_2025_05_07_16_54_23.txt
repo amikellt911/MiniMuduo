@@ -1,0 +1,13 @@
+ [INFO]  : [2025_05_07_16_54_23] : ThreadID:[117420] EventLoop 117420 start looping
+ [INFO]  : [2025_05_07_16_54_23] : ThreadID:[117421] EventLoop 117421 start looping
+ [INFO]  : [2025_05_07_16_54_23] : ThreadID:[117422] EventLoop 117422 start looping
+ [INFO]  : [2025_05_07_16_54_23] : ThreadID:[117416] EventLoop 117416 start looping
+ [INFO]  : [2025_05_07_16_54_26] : ThreadID:[117416] EPollPoller::poll: 1 events happened
+ [INFO]  : [2025_05_07_16_54_26] : ThreadID:[117416] channel handleEvent revents:1 fd:6
+ [INFO]  : [2025_05_07_16_54_26] : ThreadID:[117416] TcpServer::newConnection - TestServer-127.0.0.1:8080#1 from 127.0.0.1:42828
+ [INFO]  : [2025_05_07_16_54_26] : ThreadID:[117416] TcpConnection::ctor - fd = 15
+ [INFO]  : [2025_05_07_16_54_26] : ThreadID:[117419] EPollPoller::poll: 1 events happened
+ [INFO]  : [2025_05_07_16_54_26] : ThreadID:[117419] channel handleEvent revents:1 fd:8
+ [INFO]  : [2025_05_07_16_54_26] : ThreadID:[117419] Connection Up127.0.0.1:42828
+ [INFO]  : [2025_05_07_16_54_34] : ThreadID:[117419] EPollPoller::poll: 1 events happened
+ [INFO]  : [2025_05_07_16_54_34] : ThreadID:[117419] channel handleEvent revents:1 fd:15
