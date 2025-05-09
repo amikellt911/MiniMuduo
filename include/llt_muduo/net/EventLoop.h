@@ -1,8 +1,8 @@
 #pragma once
-#include "llt_muduo/base/noncopyable.h"
-#include "llt_muduo/base/Logger.h"
-#include "llt_muduo/base/Timestamp.h"
-#include "llt_muduo/base/CurrentThread.h"
+#include "MiniMuduo/base/noncopyable.h"
+#include "MiniMuduo/base/Logger.h"
+#include "MiniMuduo/base/Timestamp.h"
+#include "MiniMuduo/base/CurrentThread.h"
 
 #include <vector>
 #include <map>
@@ -11,14 +11,14 @@
 #include <atomic>
 #include <assert.h>
 #include <mutex>
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
 
         class Channel;
         class Poller;
-        class EventLoop : llt_muduo::base::noncopyable
+        class EventLoop : MiniMuduo::base::noncopyable
         {
         public:
             using Functor = std::function<void()>;
@@ -39,7 +39,7 @@ namespace llt_muduo
 
             void assertInLoopThread() const { assert(isInLoopThread()); };
 
-            bool isInLoopThread() const { return threadId_ == llt_muduo::base::CurrentThread::tid(); }
+            bool isInLoopThread() const { return threadId_ == MiniMuduo::base::CurrentThread::tid(); }
 
         private:
             void handleRead();
@@ -59,7 +59,7 @@ namespace llt_muduo
 
             // 我也不知道要不要这个，自动补全帮我生成的，感觉好像是需要的陈硕的书好像也讲了，好像是记录时间，计算效率的
             // 用于记录poll返回时间，并将其传给Channel的handEvent()
-            llt_muduo::base::Timestamp pollReturnTime_;
+            MiniMuduo::base::Timestamp pollReturnTime_;
 
             // Poller
             std::unique_ptr<Poller> poller_;
@@ -85,4 +85,4 @@ namespace llt_muduo
         };
 
     } // namespace net
-} // namespace llt_muduo
+} // namespace MiniMuduo

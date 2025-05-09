@@ -3,13 +3,13 @@
 #include <memory>
 #include <atomic>
 
-#include "llt_muduo/base/noncopyable.h"
-#include "llt_muduo/base/Timestamp.h"
-#include "llt_muduo/net/Buffer.h"
-#include "llt_muduo/net/InetAddress.h"
-#include "llt_muduo/net/Callbacks.h"
+#include "MiniMuduo/base/noncopyable.h"
+#include "MiniMuduo/base/Timestamp.h"
+#include "MiniMuduo/net/Buffer.h"
+#include "MiniMuduo/net/InetAddress.h"
+#include "MiniMuduo/net/Callbacks.h"
 
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
@@ -17,7 +17,7 @@ namespace llt_muduo
         class EventLoop;
         class Socket;
 
-        class TcpConnection : llt_muduo::base::noncopyable,
+        class TcpConnection : MiniMuduo::base::noncopyable,
                             public std::enable_shared_from_this<TcpConnection>
         {
             public:
@@ -67,7 +67,7 @@ namespace llt_muduo
                 };
                 void setState(StateE s) { state_ = s; }
 
-                void handleRead(llt_muduo::base::Timestamp receiveTime);
+                void handleRead(MiniMuduo::base::Timestamp receiveTime);
                 void handleWrite();
                 void handleClose();
                 void handleError();

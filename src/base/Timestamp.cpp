@@ -1,7 +1,7 @@
 #include <time.h>
 
-#include "llt_muduo/base/Timestamp.h"
-namespace llt_muduo
+#include "MiniMuduo/base/Timestamp.h"
+namespace MiniMuduo
 {
     namespace base{
     Timestamp::Timestamp() : microSecondsSinceEpoch_(0)

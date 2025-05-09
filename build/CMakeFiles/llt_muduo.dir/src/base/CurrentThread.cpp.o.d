@@ -1,7 +1,7 @@
-CMakeFiles/llt_muduo.dir/src/base/CurrentThread.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/base/CurrentThread.cpp \
+CMakeFiles/MiniMuduo.dir/src/base/CurrentThread.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/base/CurrentThread.cpp \
  /usr/include/stdc-predef.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/CurrentThread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/CurrentThread.h \
  /usr/include/x86_64-linux-gnu/sys/syscall.h \
  /usr/include/x86_64-linux-gnu/asm/unistd.h \
  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \

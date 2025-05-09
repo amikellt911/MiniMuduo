@@ -4,11 +4,11 @@
 #include<unordered_map>
 #include<functional>
 #include<atomic>
-#include"llt_muduo/net/Callbacks.h"
-#include"llt_muduo/base/noncopyable.h"
+#include"MiniMuduo/net/Callbacks.h"
+#include"MiniMuduo/base/noncopyable.h"
 
 
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
@@ -17,7 +17,7 @@ namespace llt_muduo
         class EventLoopThreadPool;
         class InetAddress;
         class TcpConnection;
-        class TcpServer : llt_muduo::base::noncopyable
+        class TcpServer : MiniMuduo::base::noncopyable
         { 
 
             public:

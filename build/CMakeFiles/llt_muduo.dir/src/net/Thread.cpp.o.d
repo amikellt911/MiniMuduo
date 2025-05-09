@@ -1,7 +1,7 @@
-CMakeFiles/llt_muduo.dir/src/net/Thread.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/net/Thread.cpp \
+CMakeFiles/MiniMuduo.dir/src/net/Thread.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/net/Thread.cpp \
  /usr/include/stdc-predef.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/Thread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/Thread.h \
  /usr/include/c++/13/functional \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -155,8 +155,8 @@ CMakeFiles/llt_muduo.dir/src/net/Thread.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc /usr/include/c++/13/atomic \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/noncopyable.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/CurrentThread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/noncopyable.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/CurrentThread.h \
  /usr/include/x86_64-linux-gnu/sys/syscall.h \
  /usr/include/x86_64-linux-gnu/asm/unistd.h \
  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \

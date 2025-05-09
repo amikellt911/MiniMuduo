@@ -1,12 +1,12 @@
 #pragma once
 
-#include "llt_muduo/base/noncopyable.h"
+#include "MiniMuduo/base/noncopyable.h"
 
-namespace llt_muduo {
+namespace MiniMuduo {
     namespace net { 
         class InetAddress;
 
-        class Socket : llt_muduo::base::noncopyable{
+        class Socket : MiniMuduo::base::noncopyable{
             public:
                 explicit Socket(int sockfd)
                     : sockfd_(sockfd)

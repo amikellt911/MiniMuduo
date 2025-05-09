@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/llt/coding/Project/llt/llt_muduo/include
+CXX_INCLUDES = -I/home/llt/coding/Project/llt/MiniMuduo/include
 
 CXX_FLAGS = -g -g -std=gnu++11
 

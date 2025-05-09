@@ -1,5 +1,5 @@
-CMakeFiles/llt_muduo.dir/src/net/Channel.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/net/Channel.cpp \
+CMakeFiles/MiniMuduo.dir/src/net/Channel.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/net/Channel.cpp \
  /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/sys/epoll.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -39,7 +39,7 @@ CMakeFiles/llt_muduo.dir/src/net/Channel.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
  /usr/include/x86_64-linux-gnu/bits/epoll.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/Channel.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/Channel.h \
  /usr/include/c++/13/functional \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -120,7 +120,7 @@ CMakeFiles/llt_muduo.dir/src/net/Channel.cpp.o: \
  /usr/include/c++/13/bits/atomic_base.h \
  /usr/include/c++/13/bits/atomic_lockfree_defines.h \
  /usr/include/c++/13/backward/auto_ptr.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Timestamp.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Timestamp.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/localefwd.h \
@@ -166,15 +166,15 @@ CMakeFiles/llt_muduo.dir/src/net/Channel.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/noncopyable.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Logger.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/noncopyable.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Logger.h \
  /usr/include/c++/13/atomic /usr/include/c++/13/fstream \
  /usr/include/c++/13/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/EventLoop.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/CurrentThread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/EventLoop.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/CurrentThread.h \
  /usr/include/x86_64-linux-gnu/sys/syscall.h \
  /usr/include/x86_64-linux-gnu/asm/unistd.h \
  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \

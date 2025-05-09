@@ -1,9 +1,9 @@
-CMakeFiles/llt_muduo.dir/src/net/EventLoop.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/net/EventLoop.cpp \
+CMakeFiles/MiniMuduo.dir/src/net/EventLoop.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/net/EventLoop.cpp \
  /usr/include/stdc-predef.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/EventLoop.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/noncopyable.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Logger.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/EventLoop.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/noncopyable.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Logger.h \
  /usr/include/c++/13/atomic /usr/include/c++/13/bits/atomic_base.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -155,9 +155,9 @@ CMakeFiles/llt_muduo.dir/src/net/EventLoop.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Timestamp.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Timestamp.h \
  /usr/include/c++/13/iostream \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/CurrentThread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/CurrentThread.h \
  /usr/include/x86_64-linux-gnu/sys/syscall.h \
  /usr/include/x86_64-linux-gnu/asm/unistd.h \
  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
@@ -196,8 +196,8 @@ CMakeFiles/llt_muduo.dir/src/net/EventLoop.cpp.o: \
  /usr/include/c++/13/bits/parse_numbers.h \
  /usr/include/c++/13/bits/std_mutex.h \
  /usr/include/c++/13/bits/unique_lock.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/Channel.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/Poller.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/Channel.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/Poller.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \

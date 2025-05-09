@@ -1,7 +1,7 @@
-CMakeFiles/llt_muduo.dir/src/net/Buffer.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/net/Buffer.cpp \
+CMakeFiles/MiniMuduo.dir/src/net/Buffer.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/net/Buffer.cpp \
  /usr/include/stdc-predef.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/Buffer.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/Buffer.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

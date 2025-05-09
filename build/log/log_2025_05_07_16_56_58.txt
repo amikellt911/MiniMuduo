@@ -22,3 +22,25 @@
  [INFO]  : [2025_05_07_16_57_45] : ThreadID:[118094] Connection Up127.0.0.1:56450
  [INFO]  : [2025_05_07_16_57_53] : ThreadID:[118094] EPollPoller::poll: 1 events happened
  [INFO]  : [2025_05_07_16_57_53] : ThreadID:[118094] channel handleEvent revents:1 fd:16
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118094] EPollPoller::poll: 1 events happened
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118094] channel handleEvent revents:1 fd:16
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118094] TcpConnection fd=16 is closed
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118094] Connection Up127.0.0.1:56450
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118092] EPollPoller::poll: 1 events happened
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118092] channel handleEvent revents:1 fd:4
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118092] TcpServer::removeConnectionInLoop - TestServer-127.0.0.1:8080#2
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118094] EPollPoller::poll: 1 events happened
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118094] channel handleEvent revents:1 fd:10
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118094] Connection Up127.0.0.1:56450
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118094] TcpConnection::dtor - fd = 16
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118093] EPollPoller::poll: 1 events happened
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118093] channel handleEvent revents:1 fd:15
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118093] TcpConnection fd=15 is closed
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118093] Connection Up127.0.0.1:37478
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118092] EPollPoller::poll: 1 events happened
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118092] channel handleEvent revents:1 fd:4
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118092] TcpServer::removeConnectionInLoop - TestServer-127.0.0.1:8080#1
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118093] EPollPoller::poll: 1 events happened
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118093] channel handleEvent revents:1 fd:8
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118093] Connection Up127.0.0.1:37478
+ [INFO]  : [2025_05_07_21_16_35] : ThreadID:[118093] TcpConnection::dtor - fd = 15

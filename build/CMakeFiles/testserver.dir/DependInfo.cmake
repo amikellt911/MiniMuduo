@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/llt/coding/Project/llt/llt_muduo/test/testserver.cpp" "CMakeFiles/testserver.dir/test/testserver.cpp.o" "gcc" "CMakeFiles/testserver.dir/test/testserver.cpp.o.d"
+  "/home/llt/coding/Project/llt/MiniMuduo/test/testserver.cpp" "CMakeFiles/testserver.dir/test/testserver.cpp.o" "gcc" "CMakeFiles/testserver.dir/test/testserver.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/llt_muduo.dir/DependInfo.cmake"
+  "/home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/MiniMuduo.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

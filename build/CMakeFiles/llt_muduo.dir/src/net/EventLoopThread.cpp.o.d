@@ -1,7 +1,7 @@
-CMakeFiles/llt_muduo.dir/src/net/EventLoopThread.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/net/EventLoopThread.cpp \
+CMakeFiles/MiniMuduo.dir/src/net/EventLoopThread.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/net/EventLoopThread.cpp \
  /usr/include/stdc-predef.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/EventLoopThread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/EventLoopThread.h \
  /usr/include/c++/13/functional \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -115,8 +115,8 @@ CMakeFiles/llt_muduo.dir/src/net/EventLoopThread.cpp.o: \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/ext/concurrence.h \
  /usr/include/c++/13/bits/cxxabi_forced.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/noncopyable.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/Thread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/noncopyable.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/Thread.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/stl_tempbuf.h \
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_algobase.h \
@@ -159,8 +159,8 @@ CMakeFiles/llt_muduo.dir/src/net/EventLoopThread.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc /usr/include/c++/13/atomic \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/EventLoop.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Logger.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/EventLoop.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Logger.h \
  /usr/include/c++/13/fstream /usr/include/c++/13/istream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/ios_base.h \
  /usr/include/c++/13/bits/locale_classes.h \
@@ -180,9 +180,9 @@ CMakeFiles/llt_muduo.dir/src/net/EventLoopThread.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Timestamp.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Timestamp.h \
  /usr/include/c++/13/iostream \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/CurrentThread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/CurrentThread.h \
  /usr/include/x86_64-linux-gnu/sys/syscall.h \
  /usr/include/x86_64-linux-gnu/asm/unistd.h \
  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \

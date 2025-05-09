@@ -10,13 +10,13 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/3.22.1/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/3.22.1/CompilerIdCXX/a.out"
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp
 
 Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3e721/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3e721.dir/build.make CMakeFiles/cmTC_3e721.dir/build
-gmake[1]: Entering directory '/home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp'
+gmake[1]: Entering directory '/home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp'
 Building CXX object CMakeFiles/cmTC_3e721.dir/CMakeCXXCompilerABI.cpp.o
 /usr/bin/c++   -v -o CMakeFiles/cmTC_3e721.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp
 Using built-in specs.
@@ -74,7 +74,7 @@ LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/
 COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3e721' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3e721.'
  /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccgTSQ9l.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_3e721 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_3e721.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
 COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3e721' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3e721.'
-gmake[1]: Leaving directory '/home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp'
+gmake[1]: Leaving directory '/home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp'
 
 
 
@@ -101,10 +101,10 @@ Parsed CXX implicit include dir info from above output: rv=done
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp]
   ignore line: []
   ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3e721/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3e721.dir/build.make CMakeFiles/cmTC_3e721.dir/build]
-  ignore line: [gmake[1]: Entering directory '/home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp']
+  ignore line: [gmake[1]: Entering directory '/home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp']
   ignore line: [Building CXX object CMakeFiles/cmTC_3e721.dir/CMakeCXXCompilerABI.cpp.o]
   ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_3e721.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp]
   ignore line: [Using built-in specs.]
@@ -223,30 +223,30 @@ Parsed CXX implicit link information from above output:
 
 
 Determining if the include file pthread.h exists passed with the following output:
-Change Dir: /home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp
 
 Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1ff29/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1ff29.dir/build.make CMakeFiles/cmTC_1ff29.dir/build
-gmake[1]: Entering directory '/home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp'
+gmake[1]: Entering directory '/home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp'
 Building CXX object CMakeFiles/cmTC_1ff29.dir/CheckIncludeFile.cxx.o
-/usr/bin/c++   -std=gnu++11 -o CMakeFiles/cmTC_1ff29.dir/CheckIncludeFile.cxx.o -c /home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+/usr/bin/c++   -std=gnu++11 -o CMakeFiles/cmTC_1ff29.dir/CheckIncludeFile.cxx.o -c /home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
 Linking CXX executable cmTC_1ff29
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1ff29.dir/link.txt --verbose=1
 /usr/bin/c++ CMakeFiles/cmTC_1ff29.dir/CheckIncludeFile.cxx.o -o cmTC_1ff29 
-gmake[1]: Leaving directory '/home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp'
+gmake[1]: Leaving directory '/home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp'
 
 
 
 Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
-Change Dir: /home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp
 
 Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_4a035/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_4a035.dir/build.make CMakeFiles/cmTC_4a035.dir/build
-gmake[1]: Entering directory '/home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp'
+gmake[1]: Entering directory '/home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp'
 Building CXX object CMakeFiles/cmTC_4a035.dir/src.cxx.o
-/usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu++11 -o CMakeFiles/cmTC_4a035.dir/src.cxx.o -c /home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp/src.cxx
+/usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu++11 -o CMakeFiles/cmTC_4a035.dir/src.cxx.o -c /home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp/src.cxx
 Linking CXX executable cmTC_4a035
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4a035.dir/link.txt --verbose=1
 /usr/bin/c++ CMakeFiles/cmTC_4a035.dir/src.cxx.o -o cmTC_4a035 
-gmake[1]: Leaving directory '/home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles/CMakeTmp'
+gmake[1]: Leaving directory '/home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles/CMakeTmp'
 
 
 Source file was:

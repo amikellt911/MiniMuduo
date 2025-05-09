@@ -3,26 +3,26 @@
 #include<functional>//仿函数
 #include<memory>//智能指针
 
-#include "llt_muduo/base/Timestamp.h" "
-#include "llt_muduo/base/noncopyable.h"
+#include "MiniMuduo/base/Timestamp.h" "
+#include "MiniMuduo/base/noncopyable.h"
 
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
 
         class EventLoop;//前向声明
 
-        class Channel:llt_muduo::base::noncopyable{
+        class Channel:MiniMuduo::base::noncopyable{
             public:
                 using EventCallback=std::function<void()>;
-                using ReadEventCallback = std::function<void(llt_muduo::base::Timestamp)>;
+                using ReadEventCallback = std::function<void(MiniMuduo::base::Timestamp)>;
 
                 Channel(EventLoop* loop,int sockfd);
 
                 ~Channel();
 
-                void handleEvent(llt_muduo::base::Timestamp receiveTime);
+                void handleEvent(MiniMuduo::base::Timestamp receiveTime);
 
                 void setReadCallback(ReadEventCallback cb){readCallback_=std::move(cb);}
 
@@ -87,7 +87,7 @@ namespace llt_muduo
 
                 void update();
 
-                void handleEventWithGuard(llt_muduo::base::Timestamp receiveTime);
+                void handleEventWithGuard(MiniMuduo::base::Timestamp receiveTime);
 
                 static const int kNoneEvent;
                 

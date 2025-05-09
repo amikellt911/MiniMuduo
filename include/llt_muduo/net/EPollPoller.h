@@ -3,10 +3,10 @@
 #include<vector>
 #include<sys/epoll.h>
 
-#include"llt_muduo/net/Poller.h"
-#include"llt_muduo/base/Timestamp.h"
+#include"MiniMuduo/net/Poller.h"
+#include"MiniMuduo/base/Timestamp.h"
 
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
@@ -17,7 +17,7 @@ namespace llt_muduo
                 EPollPoller(EventLoop *loop);
                 ~EPollPoller() override;
 
-                llt_muduo::base::Timestamp poll(int timeoutMs,ChannelList *activeChannels) override;
+                MiniMuduo::base::Timestamp poll(int timeoutMs,ChannelList *activeChannels) override;
                 void removeChannel(Channel *channel) override;
                 void updateChannel(Channel *channel) override;
 

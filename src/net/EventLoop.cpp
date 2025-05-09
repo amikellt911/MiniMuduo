@@ -1,8 +1,8 @@
-#include "llt_muduo/net/EventLoop.h"
-#include "llt_muduo/net/Channel.h"
-#include "llt_muduo/net/Poller.h"
+#include "MiniMuduo/net/EventLoop.h"
+#include "MiniMuduo/net/Channel.h"
+#include "MiniMuduo/net/Poller.h"
 #include "sys/eventfd.h"
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
@@ -35,7 +35,7 @@ namespace llt_muduo
                                  quit_(false),
                                  eventHandling_(false),
                                  callingPendingFunctors_(false),
-                                 threadId_(llt_muduo::base::CurrentThread::tid()),
+                                 threadId_(MiniMuduo::base::CurrentThread::tid()),
                                  //初始化列表的初始化顺序和写的顺序无关
                                  //和变量声明顺序有关，因为反了，导致wakeupChannel初始化时，wakeupFd还未初始化，导致错误·
                                  wakeupFd_(createEventfd()),

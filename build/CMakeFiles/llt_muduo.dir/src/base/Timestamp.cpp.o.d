@@ -1,5 +1,5 @@
-CMakeFiles/llt_muduo.dir/src/base/Timestamp.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/base/Timestamp.cpp \
+CMakeFiles/MiniMuduo.dir/src/base/Timestamp.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/base/Timestamp.cpp \
  /usr/include/stdc-predef.h /usr/include/time.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -26,7 +26,7 @@ CMakeFiles/llt_muduo.dir/src/base/Timestamp.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Timestamp.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Timestamp.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -147,4 +147,4 @@ CMakeFiles/llt_muduo.dir/src/base/Timestamp.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/noncopyable.h
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/noncopyable.h

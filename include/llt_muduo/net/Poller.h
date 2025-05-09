@@ -3,23 +3,23 @@
 #include<vector>
 #include<unordered_map>
 
-#include "llt_muduo/base/Timestamp.h"
-#include "llt_muduo/base/noncopyable.h"
+#include "MiniMuduo/base/Timestamp.h"
+#include "MiniMuduo/base/noncopyable.h"
 
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net{
         class Channel;
         class EventLoop;
 
-        class Poller:llt_muduo::base::noncopyable{
+        class Poller:MiniMuduo::base::noncopyable{
             public:
                 using ChannelList = std::vector<Channel*>;
 
                 Poller(EventLoop *loop);
                 virtual ~Poller()=default;
 
-                virtual llt_muduo::base::Timestamp poll(int timeoutMs,ChannelList *activeChannels)=0;
+                virtual MiniMuduo::base::Timestamp poll(int timeoutMs,ChannelList *activeChannels)=0;
                 virtual void updateChannel(Channel *channel)=0;
                 virtual void removeChannel(Channel *Channel)=0;
 

@@ -1,11 +1,11 @@
 #pragma once 
 
-#include "llt_muduo/base/Logger.h"
-#include "llt_muduo/base/Timestamp.h"
+#include "MiniMuduo/base/Logger.h"
+#include "MiniMuduo/base/Timestamp.h"
 #include <thread>
 #include <sstream>
-#include "llt_muduo/base/CurrentThread.h"
-namespace llt_muduo{    
+#include "MiniMuduo/base/CurrentThread.h"
+namespace MiniMuduo{    
     namespace base{
     Logger::Logger(){
         globalLogLevel_ = LogLevel::INFO;

@@ -1,2 +1,2 @@
-# Empty dependencies file for llt_muduo.
+# Empty dependencies file for MiniMuduo.
 # This may be replaced when dependencies are built.

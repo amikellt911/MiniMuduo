@@ -1,7 +1,7 @@
-CMakeFiles/llt_muduo.dir/src/base/Logger.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/base/Logger.cpp \
+CMakeFiles/MiniMuduo.dir/src/base/Logger.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/base/Logger.cpp \
  /usr/include/stdc-predef.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Logger.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Logger.h \
  /usr/include/c++/13/atomic /usr/include/c++/13/bits/atomic_base.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -153,8 +153,8 @@ CMakeFiles/llt_muduo.dir/src/base/Logger.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/noncopyable.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Timestamp.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/noncopyable.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Timestamp.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/thread \
  /usr/include/c++/13/bits/std_thread.h /usr/include/c++/13/tuple \
  /usr/include/c++/13/bits/uses_allocator.h \
@@ -164,7 +164,7 @@ CMakeFiles/llt_muduo.dir/src/base/Logger.cpp.o: \
  /usr/include/c++/13/cstdint /usr/include/c++/13/limits \
  /usr/include/c++/13/ctime /usr/include/c++/13/bits/parse_numbers.h \
  /usr/include/c++/13/sstream /usr/include/c++/13/bits/sstream.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/CurrentThread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/CurrentThread.h \
  /usr/include/x86_64-linux-gnu/sys/syscall.h \
  /usr/include/x86_64-linux-gnu/asm/unistd.h \
  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \

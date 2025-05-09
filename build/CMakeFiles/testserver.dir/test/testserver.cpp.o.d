@@ -1,7 +1,7 @@
 CMakeFiles/testserver.dir/test/testserver.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/test/testserver.cpp \
+ /home/llt/coding/Project/llt/MiniMuduo/test/testserver.cpp \
  /usr/include/stdc-predef.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/TcpServer.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/TcpServer.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -120,8 +120,8 @@ CMakeFiles/testserver.dir/test/testserver.cpp.o: \
  /usr/include/c++/13/bits/range_access.h \
  /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/functional \
  /usr/include/c++/13/bits/std_function.h /usr/include/c++/13/atomic \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/Callbacks.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Timestamp.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/Callbacks.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Timestamp.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/localefwd.h \
@@ -171,18 +171,18 @@ CMakeFiles/testserver.dir/test/testserver.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/noncopyable.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Logger.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/noncopyable.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Logger.h \
  /usr/include/c++/13/fstream /usr/include/c++/13/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/TcpConnection.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/Buffer.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/TcpConnection.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/Buffer.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/InetAddress.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/InetAddress.h \
  /usr/include/arpa/inet.h /usr/include/netinet/in.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
@@ -201,8 +201,8 @@ CMakeFiles/testserver.dir/test/testserver.cpp.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/EventLoop.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/CurrentThread.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/EventLoop.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/CurrentThread.h \
  /usr/include/x86_64-linux-gnu/sys/syscall.h \
  /usr/include/x86_64-linux-gnu/asm/unistd.h \
  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \

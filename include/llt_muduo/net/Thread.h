@@ -6,13 +6,13 @@
 #include<condition_variable>
 #include<string>
 #include<atomic>
-#include "llt_muduo/base/noncopyable.h"
+#include "MiniMuduo/base/noncopyable.h"
 
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
-        class Thread:llt_muduo::base::noncopyable{
+        class Thread:MiniMuduo::base::noncopyable{
             public:
                 using ThreadFunc=std::function<void()>;
                 //防止隐式类型转换，增加代码可读性，是良好的编程实践

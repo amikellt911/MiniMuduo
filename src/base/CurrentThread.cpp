@@ -1,6 +1,6 @@
-#include "llt_muduo/base/CurrentThread.h"
+#include "MiniMuduo/base/CurrentThread.h"
 
-namespace llt_muduo{
+namespace MiniMuduo{
     namespace base{
     namespace CurrentThread{
         __thread int t_cachedTid = 0;

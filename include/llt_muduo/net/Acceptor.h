@@ -4,11 +4,11 @@
 //要创建该实例作为成员变量，或者继承该类
 //头文件的一些内联函数需要调用一些成员变量或者函数
 //都需要完整的头文件
-#include "llt_muduo/base/noncopyable.h"
-#include "llt_muduo/net/Socket.h"
-#include "llt_muduo/net/Channel.h"
+#include "MiniMuduo/base/noncopyable.h"
+#include "MiniMuduo/net/Socket.h"
+#include "MiniMuduo/net/Channel.h"
 
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
@@ -27,7 +27,7 @@ namespace llt_muduo
         //但是最佳实践还是跟加速编译有关，减少编译的依赖
         //比如EventLoop修改后，包含Acceptor.h的文件不需要重新编译（如果不包含EventLoop.h的话）
     
-        class Acceptor : llt_muduo::base::noncopyable {
+        class Acceptor : MiniMuduo::base::noncopyable {
             public:
                 using NewConnectionCallback = std::function<void(int sockfd, const InetAddress&)>;
 

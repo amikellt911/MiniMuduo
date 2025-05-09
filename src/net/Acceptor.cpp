@@ -1,7 +1,7 @@
-#include "llt_muduo/net/Acceptor.h"
-#include "llt_muduo/base/Logger.h"
-#include "llt_muduo/net/InetAddress.h"
-#include "llt_muduo/net/EventLoop.h"
+#include "MiniMuduo/net/Acceptor.h"
+#include "MiniMuduo/base/Logger.h"
+#include "MiniMuduo/net/InetAddress.h"
+#include "MiniMuduo/net/EventLoop.h"
         //更奇妙的地方，
         //.cpp没有EventLoop.h
         //因为.cpp只需要通过loop初始化Channel
@@ -10,7 +10,7 @@
         //所以Channel.cpp里面有EventLoop.h，
         //这叫做最小头文件包含，太妙了
 
-namespace llt_muduo{
+namespace MiniMuduo{
     namespace net{
         static int createNonblockingSocketFd()
         {

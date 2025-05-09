@@ -1,9 +1,9 @@
-CMakeFiles/llt_muduo.dir/src/net/Socket.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/net/Socket.cpp \
+CMakeFiles/MiniMuduo.dir/src/net/Socket.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/net/Socket.cpp \
  /usr/include/stdc-predef.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/Socket.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/noncopyable.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/InetAddress.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/Socket.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/noncopyable.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/InetAddress.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -132,7 +132,7 @@ CMakeFiles/llt_muduo.dir/src/net/Socket.cpp.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/base/Logger.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/base/Logger.h \
  /usr/include/c++/13/atomic /usr/include/c++/13/bits/atomic_base.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/c++/13/bits/atomic_lockfree_defines.h \

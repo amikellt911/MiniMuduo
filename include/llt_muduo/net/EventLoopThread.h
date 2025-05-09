@@ -4,17 +4,17 @@
 #include <mutex>
 #include <condition_variable>
 
-#include "llt_muduo/base/noncopyable.h"
-#include "llt_muduo/net/Thread.h"
-#include "llt_muduo/net/EventLoop.h"
+#include "MiniMuduo/base/noncopyable.h"
+#include "MiniMuduo/net/Thread.h"
+#include "MiniMuduo/net/EventLoop.h"
 
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
         
         class EventLoop;
-        class EventLoopThread : llt_muduo::base::noncopyable
+        class EventLoopThread : MiniMuduo::base::noncopyable
         {
             public:
                 using ThreadInitCallback = std::function<void(EventLoop*)>;

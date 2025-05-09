@@ -1,5 +1,5 @@
-CMakeFiles/llt_muduo.dir/src/net/InetAddress.cpp.o: \
- /home/llt/coding/Project/llt/llt_muduo/src/net/InetAddress.cpp \
+CMakeFiles/MiniMuduo.dir/src/net/InetAddress.cpp.o: \
+ /home/llt/coding/Project/llt/MiniMuduo/src/net/InetAddress.cpp \
  /usr/include/stdc-predef.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -110,7 +110,7 @@ CMakeFiles/llt_muduo.dir/src/net/InetAddress.cpp.o: \
  /usr/include/c++/13/bits/functional_hash.h \
  /usr/include/c++/13/bits/hash_bytes.h \
  /usr/include/c++/13/bits/basic_string.tcc \
- /home/llt/coding/Project/llt/llt_muduo/include/llt_muduo/net/InetAddress.h \
+ /home/llt/coding/Project/llt/MiniMuduo/include/MiniMuduo/net/InetAddress.h \
  /usr/include/arpa/inet.h /usr/include/netinet/in.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \

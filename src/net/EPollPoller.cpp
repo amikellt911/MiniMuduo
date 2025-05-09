@@ -2,11 +2,11 @@
 #include <unistd.h>
 #include <string.h> //strerror
 #include <string>
-#include "llt_muduo/net/EPollPoller.h"
-#include "llt_muduo/base/Logger.h"
-#include "llt_muduo/net/Channel.h"
+#include "MiniMuduo/net/EPollPoller.h"
+#include "MiniMuduo/base/Logger.h"
+#include "MiniMuduo/net/Channel.h"
 
-namespace llt_muduo
+namespace MiniMuduo
 {
     namespace net
     {
@@ -31,13 +31,13 @@ namespace llt_muduo
             ::close(epollfd_);
         }
 
-        llt_muduo::base::Timestamp EPollPoller::poll(int timeoutMs, ChannelList *activeChannels)
+        MiniMuduo::base::Timestamp EPollPoller::poll(int timeoutMs, ChannelList *activeChannels)
         {
             LOG_DEBUG(std::string("poll ") + "fd total count:" + std::to_string(channels_.size()));
 
             int numEvents = ::epoll_wait(epollfd_, &*events_.begin(), static_cast<int>(events_.size()), timeoutMs);
             int saveErrno = errno;
-            llt_muduo::base::Timestamp receiveTime(llt_muduo::base::Timestamp::now());
+            MiniMuduo::base::Timestamp receiveTime(MiniMuduo::base::Timestamp::now());
             if (numEvents > 0)
             {
                 LOG_INFO(std::string("EPollPoller::poll: ") + std::to_string(numEvents) + " events happened");

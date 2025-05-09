@@ -1,7 +1,7 @@
-#include"llt_muduo/net/Thread.h"
-#include"llt_muduo/base/CurrentThread.h"
+#include"MiniMuduo/net/Thread.h"
+#include"MiniMuduo/base/CurrentThread.h"
 #include<assert.h>
-namespace llt_muduo{
+namespace MiniMuduo{
     namespace net{
         //static和extern必须要声明类型
         std::atomic_int Thread::numCreated_(0);
@@ -36,7 +36,7 @@ namespace llt_muduo{
             thread_ = std::shared_ptr<std::thread>(new std::thread([&]() {
                 {
                     std::lock_guard<std::mutex> lock(mutex_);
-                    tid_ = llt_muduo::base::CurrentThread::tid();
+                    tid_ = MiniMuduo::base::CurrentThread::tid();
                 }                               
                 cond_.notify_one();
                 func_();                     

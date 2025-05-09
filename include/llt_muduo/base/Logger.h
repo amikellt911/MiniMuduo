@@ -3,9 +3,9 @@
 #include <atomic>
 #include <string>
 #include <fstream>
-#include "llt_muduo/base/noncopyable.h"
+#include "MiniMuduo/base/noncopyable.h"
 
-namespace llt_muduo
+namespace MiniMuduo
 {
 
     namespace base
@@ -48,40 +48,40 @@ namespace llt_muduo
         };
     }
 
-} // namespace llt_muduo
+} // namespace MiniMuduo
 
 #define LOG_DEBUG(msg)                                                                      \
     do                                                                                      \
     {                                                                                       \
-        if (llt_muduo::base::Logger::instance().shouldLog(llt_muduo::base::LogLevel::DEBUG)) \
+        if (MiniMuduo::base::Logger::instance().shouldLog(MiniMuduo::base::LogLevel::DEBUG)) \
         {                                                                                   \
-            llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::DEBUG); \
+            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::DEBUG); \
         }                                                                                   \
     } while (0)
 
 #define LOG_INFO(msg)                                                                      \
     do                                                                                     \
     {                                                                                      \
-        if (llt_muduo::base::Logger::instance().shouldLog(llt_muduo::base::LogLevel::INFO)) \
+        if (MiniMuduo::base::Logger::instance().shouldLog(MiniMuduo::base::LogLevel::INFO)) \
         {                                                                                  \
-            llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::INFO); \
+            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::INFO); \
         }                                                                                  \
     } while (0)
 //普通错误，整体可控，虽然有bug
 #define LOG_ERROR(msg)                                                                      \
     do                                                                                      \
     {                                                                                       \
-        if (llt_muduo::base::Logger::instance().shouldLog(llt_muduo::base::LogLevel::ERROR)) \
+        if (MiniMuduo::base::Logger::instance().shouldLog(MiniMuduo::base::LogLevel::ERROR)) \
         {                                                                                   \
-            llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::ERROR); \
+            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::ERROR); \
         }                                                                                   \
     } while (0)
 //致命错误，会影响核心功能
 #define LOG_FATAL(msg)                                                                      \
     do                                                                                      \
     {                                                                                       \
-        if (llt_muduo::base::Logger::instance().shouldLog(llt_muduo::base::LogLevel::FATAL)) \
+        if (MiniMuduo::base::Logger::instance().shouldLog(MiniMuduo::base::LogLevel::FATAL)) \
         {                                                                                   \
-            llt_muduo::base::Logger::instance().log(msg, llt_muduo::base::LogLevel::FATAL); \
+            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::FATAL); \
         }                                                                                   \
     } while (0)

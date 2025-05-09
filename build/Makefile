@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/llt/coding/Project/llt/llt_muduo
+CMAKE_SOURCE_DIR = /home/llt/coding/Project/llt/MiniMuduo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/llt/coding/Project/llt/llt_muduo/build
+CMAKE_BINARY_DIR = /home/llt/coding/Project/llt/MiniMuduo/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles /home/llt/coding/Project/llt/llt_muduo/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles /home/llt/coding/Project/llt/MiniMuduo/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/llt/coding/Project/llt/llt_muduo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/llt/coding/Project/llt/MiniMuduo/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named llt_muduo
+# Target rules for targets named MiniMuduo
 
 # Build rule for target.
-llt_muduo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 llt_muduo
-.PHONY : llt_muduo
+MiniMuduo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MiniMuduo
+.PHONY : MiniMuduo
 
 # fast build rule for target.
-llt_muduo/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/build
-.PHONY : llt_muduo/fast
+MiniMuduo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/build
+.PHONY : MiniMuduo/fast
 
 #=============================================================================
 # Target rules for targets named testserver
@@ -147,7 +147,7 @@ src/base/CurrentThread.o: src/base/CurrentThread.cpp.o
 
 # target to build an object file
 src/base/CurrentThread.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/base/CurrentThread.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/base/CurrentThread.cpp.o
 .PHONY : src/base/CurrentThread.cpp.o
 
 src/base/CurrentThread.i: src/base/CurrentThread.cpp.i
@@ -155,7 +155,7 @@ src/base/CurrentThread.i: src/base/CurrentThread.cpp.i
 
 # target to preprocess a source file
 src/base/CurrentThread.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/base/CurrentThread.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/base/CurrentThread.cpp.i
 .PHONY : src/base/CurrentThread.cpp.i
 
 src/base/CurrentThread.s: src/base/CurrentThread.cpp.s
@@ -163,7 +163,7 @@ src/base/CurrentThread.s: src/base/CurrentThread.cpp.s
 
 # target to generate assembly for a file
 src/base/CurrentThread.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/base/CurrentThread.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/base/CurrentThread.cpp.s
 .PHONY : src/base/CurrentThread.cpp.s
 
 src/base/Logger.o: src/base/Logger.cpp.o
@@ -171,7 +171,7 @@ src/base/Logger.o: src/base/Logger.cpp.o
 
 # target to build an object file
 src/base/Logger.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/base/Logger.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/base/Logger.cpp.o
 .PHONY : src/base/Logger.cpp.o
 
 src/base/Logger.i: src/base/Logger.cpp.i
@@ -179,7 +179,7 @@ src/base/Logger.i: src/base/Logger.cpp.i
 
 # target to preprocess a source file
 src/base/Logger.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/base/Logger.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/base/Logger.cpp.i
 .PHONY : src/base/Logger.cpp.i
 
 src/base/Logger.s: src/base/Logger.cpp.s
@@ -187,7 +187,7 @@ src/base/Logger.s: src/base/Logger.cpp.s
 
 # target to generate assembly for a file
 src/base/Logger.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/base/Logger.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/base/Logger.cpp.s
 .PHONY : src/base/Logger.cpp.s
 
 src/base/Timestamp.o: src/base/Timestamp.cpp.o
@@ -195,7 +195,7 @@ src/base/Timestamp.o: src/base/Timestamp.cpp.o
 
 # target to build an object file
 src/base/Timestamp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/base/Timestamp.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/base/Timestamp.cpp.o
 .PHONY : src/base/Timestamp.cpp.o
 
 src/base/Timestamp.i: src/base/Timestamp.cpp.i
@@ -203,7 +203,7 @@ src/base/Timestamp.i: src/base/Timestamp.cpp.i
 
 # target to preprocess a source file
 src/base/Timestamp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/base/Timestamp.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/base/Timestamp.cpp.i
 .PHONY : src/base/Timestamp.cpp.i
 
 src/base/Timestamp.s: src/base/Timestamp.cpp.s
@@ -211,7 +211,7 @@ src/base/Timestamp.s: src/base/Timestamp.cpp.s
 
 # target to generate assembly for a file
 src/base/Timestamp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/base/Timestamp.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/base/Timestamp.cpp.s
 .PHONY : src/base/Timestamp.cpp.s
 
 src/net/Acceptor.o: src/net/Acceptor.cpp.o
@@ -219,7 +219,7 @@ src/net/Acceptor.o: src/net/Acceptor.cpp.o
 
 # target to build an object file
 src/net/Acceptor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Acceptor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Acceptor.cpp.o
 .PHONY : src/net/Acceptor.cpp.o
 
 src/net/Acceptor.i: src/net/Acceptor.cpp.i
@@ -227,7 +227,7 @@ src/net/Acceptor.i: src/net/Acceptor.cpp.i
 
 # target to preprocess a source file
 src/net/Acceptor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Acceptor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Acceptor.cpp.i
 .PHONY : src/net/Acceptor.cpp.i
 
 src/net/Acceptor.s: src/net/Acceptor.cpp.s
@@ -235,7 +235,7 @@ src/net/Acceptor.s: src/net/Acceptor.cpp.s
 
 # target to generate assembly for a file
 src/net/Acceptor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Acceptor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Acceptor.cpp.s
 .PHONY : src/net/Acceptor.cpp.s
 
 src/net/Buffer.o: src/net/Buffer.cpp.o
@@ -243,7 +243,7 @@ src/net/Buffer.o: src/net/Buffer.cpp.o
 
 # target to build an object file
 src/net/Buffer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Buffer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Buffer.cpp.o
 .PHONY : src/net/Buffer.cpp.o
 
 src/net/Buffer.i: src/net/Buffer.cpp.i
@@ -251,7 +251,7 @@ src/net/Buffer.i: src/net/Buffer.cpp.i
 
 # target to preprocess a source file
 src/net/Buffer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Buffer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Buffer.cpp.i
 .PHONY : src/net/Buffer.cpp.i
 
 src/net/Buffer.s: src/net/Buffer.cpp.s
@@ -259,7 +259,7 @@ src/net/Buffer.s: src/net/Buffer.cpp.s
 
 # target to generate assembly for a file
 src/net/Buffer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Buffer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Buffer.cpp.s
 .PHONY : src/net/Buffer.cpp.s
 
 src/net/Channel.o: src/net/Channel.cpp.o
@@ -267,7 +267,7 @@ src/net/Channel.o: src/net/Channel.cpp.o
 
 # target to build an object file
 src/net/Channel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Channel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Channel.cpp.o
 .PHONY : src/net/Channel.cpp.o
 
 src/net/Channel.i: src/net/Channel.cpp.i
@@ -275,7 +275,7 @@ src/net/Channel.i: src/net/Channel.cpp.i
 
 # target to preprocess a source file
 src/net/Channel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Channel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Channel.cpp.i
 .PHONY : src/net/Channel.cpp.i
 
 src/net/Channel.s: src/net/Channel.cpp.s
@@ -283,7 +283,7 @@ src/net/Channel.s: src/net/Channel.cpp.s
 
 # target to generate assembly for a file
 src/net/Channel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Channel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Channel.cpp.s
 .PHONY : src/net/Channel.cpp.s
 
 src/net/DefaultPoller.o: src/net/DefaultPoller.cpp.o
@@ -291,7 +291,7 @@ src/net/DefaultPoller.o: src/net/DefaultPoller.cpp.o
 
 # target to build an object file
 src/net/DefaultPoller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/DefaultPoller.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/DefaultPoller.cpp.o
 .PHONY : src/net/DefaultPoller.cpp.o
 
 src/net/DefaultPoller.i: src/net/DefaultPoller.cpp.i
@@ -299,7 +299,7 @@ src/net/DefaultPoller.i: src/net/DefaultPoller.cpp.i
 
 # target to preprocess a source file
 src/net/DefaultPoller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/DefaultPoller.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/DefaultPoller.cpp.i
 .PHONY : src/net/DefaultPoller.cpp.i
 
 src/net/DefaultPoller.s: src/net/DefaultPoller.cpp.s
@@ -307,7 +307,7 @@ src/net/DefaultPoller.s: src/net/DefaultPoller.cpp.s
 
 # target to generate assembly for a file
 src/net/DefaultPoller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/DefaultPoller.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/DefaultPoller.cpp.s
 .PHONY : src/net/DefaultPoller.cpp.s
 
 src/net/EPollPoller.o: src/net/EPollPoller.cpp.o
@@ -315,7 +315,7 @@ src/net/EPollPoller.o: src/net/EPollPoller.cpp.o
 
 # target to build an object file
 src/net/EPollPoller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EPollPoller.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EPollPoller.cpp.o
 .PHONY : src/net/EPollPoller.cpp.o
 
 src/net/EPollPoller.i: src/net/EPollPoller.cpp.i
@@ -323,7 +323,7 @@ src/net/EPollPoller.i: src/net/EPollPoller.cpp.i
 
 # target to preprocess a source file
 src/net/EPollPoller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EPollPoller.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EPollPoller.cpp.i
 .PHONY : src/net/EPollPoller.cpp.i
 
 src/net/EPollPoller.s: src/net/EPollPoller.cpp.s
@@ -331,7 +331,7 @@ src/net/EPollPoller.s: src/net/EPollPoller.cpp.s
 
 # target to generate assembly for a file
 src/net/EPollPoller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EPollPoller.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EPollPoller.cpp.s
 .PHONY : src/net/EPollPoller.cpp.s
 
 src/net/EventLoop.o: src/net/EventLoop.cpp.o
@@ -339,7 +339,7 @@ src/net/EventLoop.o: src/net/EventLoop.cpp.o
 
 # target to build an object file
 src/net/EventLoop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EventLoop.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EventLoop.cpp.o
 .PHONY : src/net/EventLoop.cpp.o
 
 src/net/EventLoop.i: src/net/EventLoop.cpp.i
@@ -347,7 +347,7 @@ src/net/EventLoop.i: src/net/EventLoop.cpp.i
 
 # target to preprocess a source file
 src/net/EventLoop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EventLoop.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EventLoop.cpp.i
 .PHONY : src/net/EventLoop.cpp.i
 
 src/net/EventLoop.s: src/net/EventLoop.cpp.s
@@ -355,7 +355,7 @@ src/net/EventLoop.s: src/net/EventLoop.cpp.s
 
 # target to generate assembly for a file
 src/net/EventLoop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EventLoop.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EventLoop.cpp.s
 .PHONY : src/net/EventLoop.cpp.s
 
 src/net/EventLoopThread.o: src/net/EventLoopThread.cpp.o
@@ -363,7 +363,7 @@ src/net/EventLoopThread.o: src/net/EventLoopThread.cpp.o
 
 # target to build an object file
 src/net/EventLoopThread.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EventLoopThread.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EventLoopThread.cpp.o
 .PHONY : src/net/EventLoopThread.cpp.o
 
 src/net/EventLoopThread.i: src/net/EventLoopThread.cpp.i
@@ -371,7 +371,7 @@ src/net/EventLoopThread.i: src/net/EventLoopThread.cpp.i
 
 # target to preprocess a source file
 src/net/EventLoopThread.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EventLoopThread.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EventLoopThread.cpp.i
 .PHONY : src/net/EventLoopThread.cpp.i
 
 src/net/EventLoopThread.s: src/net/EventLoopThread.cpp.s
@@ -379,7 +379,7 @@ src/net/EventLoopThread.s: src/net/EventLoopThread.cpp.s
 
 # target to generate assembly for a file
 src/net/EventLoopThread.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EventLoopThread.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EventLoopThread.cpp.s
 .PHONY : src/net/EventLoopThread.cpp.s
 
 src/net/EventLoopThreadPool.o: src/net/EventLoopThreadPool.cpp.o
@@ -387,7 +387,7 @@ src/net/EventLoopThreadPool.o: src/net/EventLoopThreadPool.cpp.o
 
 # target to build an object file
 src/net/EventLoopThreadPool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EventLoopThreadPool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EventLoopThreadPool.cpp.o
 .PHONY : src/net/EventLoopThreadPool.cpp.o
 
 src/net/EventLoopThreadPool.i: src/net/EventLoopThreadPool.cpp.i
@@ -395,7 +395,7 @@ src/net/EventLoopThreadPool.i: src/net/EventLoopThreadPool.cpp.i
 
 # target to preprocess a source file
 src/net/EventLoopThreadPool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EventLoopThreadPool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EventLoopThreadPool.cpp.i
 .PHONY : src/net/EventLoopThreadPool.cpp.i
 
 src/net/EventLoopThreadPool.s: src/net/EventLoopThreadPool.cpp.s
@@ -403,7 +403,7 @@ src/net/EventLoopThreadPool.s: src/net/EventLoopThreadPool.cpp.s
 
 # target to generate assembly for a file
 src/net/EventLoopThreadPool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/EventLoopThreadPool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/EventLoopThreadPool.cpp.s
 .PHONY : src/net/EventLoopThreadPool.cpp.s
 
 src/net/InetAddress.o: src/net/InetAddress.cpp.o
@@ -411,7 +411,7 @@ src/net/InetAddress.o: src/net/InetAddress.cpp.o
 
 # target to build an object file
 src/net/InetAddress.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/InetAddress.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/InetAddress.cpp.o
 .PHONY : src/net/InetAddress.cpp.o
 
 src/net/InetAddress.i: src/net/InetAddress.cpp.i
@@ -419,7 +419,7 @@ src/net/InetAddress.i: src/net/InetAddress.cpp.i
 
 # target to preprocess a source file
 src/net/InetAddress.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/InetAddress.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/InetAddress.cpp.i
 .PHONY : src/net/InetAddress.cpp.i
 
 src/net/InetAddress.s: src/net/InetAddress.cpp.s
@@ -427,7 +427,7 @@ src/net/InetAddress.s: src/net/InetAddress.cpp.s
 
 # target to generate assembly for a file
 src/net/InetAddress.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/InetAddress.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/InetAddress.cpp.s
 .PHONY : src/net/InetAddress.cpp.s
 
 src/net/Poller.o: src/net/Poller.cpp.o
@@ -435,7 +435,7 @@ src/net/Poller.o: src/net/Poller.cpp.o
 
 # target to build an object file
 src/net/Poller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Poller.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Poller.cpp.o
 .PHONY : src/net/Poller.cpp.o
 
 src/net/Poller.i: src/net/Poller.cpp.i
@@ -443,7 +443,7 @@ src/net/Poller.i: src/net/Poller.cpp.i
 
 # target to preprocess a source file
 src/net/Poller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Poller.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Poller.cpp.i
 .PHONY : src/net/Poller.cpp.i
 
 src/net/Poller.s: src/net/Poller.cpp.s
@@ -451,7 +451,7 @@ src/net/Poller.s: src/net/Poller.cpp.s
 
 # target to generate assembly for a file
 src/net/Poller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Poller.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Poller.cpp.s
 .PHONY : src/net/Poller.cpp.s
 
 src/net/Socket.o: src/net/Socket.cpp.o
@@ -459,7 +459,7 @@ src/net/Socket.o: src/net/Socket.cpp.o
 
 # target to build an object file
 src/net/Socket.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Socket.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Socket.cpp.o
 .PHONY : src/net/Socket.cpp.o
 
 src/net/Socket.i: src/net/Socket.cpp.i
@@ -467,7 +467,7 @@ src/net/Socket.i: src/net/Socket.cpp.i
 
 # target to preprocess a source file
 src/net/Socket.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Socket.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Socket.cpp.i
 .PHONY : src/net/Socket.cpp.i
 
 src/net/Socket.s: src/net/Socket.cpp.s
@@ -475,7 +475,7 @@ src/net/Socket.s: src/net/Socket.cpp.s
 
 # target to generate assembly for a file
 src/net/Socket.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Socket.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Socket.cpp.s
 .PHONY : src/net/Socket.cpp.s
 
 src/net/TcpConnection.o: src/net/TcpConnection.cpp.o
@@ -483,7 +483,7 @@ src/net/TcpConnection.o: src/net/TcpConnection.cpp.o
 
 # target to build an object file
 src/net/TcpConnection.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/TcpConnection.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/TcpConnection.cpp.o
 .PHONY : src/net/TcpConnection.cpp.o
 
 src/net/TcpConnection.i: src/net/TcpConnection.cpp.i
@@ -491,7 +491,7 @@ src/net/TcpConnection.i: src/net/TcpConnection.cpp.i
 
 # target to preprocess a source file
 src/net/TcpConnection.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/TcpConnection.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/TcpConnection.cpp.i
 .PHONY : src/net/TcpConnection.cpp.i
 
 src/net/TcpConnection.s: src/net/TcpConnection.cpp.s
@@ -499,7 +499,7 @@ src/net/TcpConnection.s: src/net/TcpConnection.cpp.s
 
 # target to generate assembly for a file
 src/net/TcpConnection.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/TcpConnection.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/TcpConnection.cpp.s
 .PHONY : src/net/TcpConnection.cpp.s
 
 src/net/TcpServer.o: src/net/TcpServer.cpp.o
@@ -507,7 +507,7 @@ src/net/TcpServer.o: src/net/TcpServer.cpp.o
 
 # target to build an object file
 src/net/TcpServer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/TcpServer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/TcpServer.cpp.o
 .PHONY : src/net/TcpServer.cpp.o
 
 src/net/TcpServer.i: src/net/TcpServer.cpp.i
@@ -515,7 +515,7 @@ src/net/TcpServer.i: src/net/TcpServer.cpp.i
 
 # target to preprocess a source file
 src/net/TcpServer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/TcpServer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/TcpServer.cpp.i
 .PHONY : src/net/TcpServer.cpp.i
 
 src/net/TcpServer.s: src/net/TcpServer.cpp.s
@@ -523,7 +523,7 @@ src/net/TcpServer.s: src/net/TcpServer.cpp.s
 
 # target to generate assembly for a file
 src/net/TcpServer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/TcpServer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/TcpServer.cpp.s
 .PHONY : src/net/TcpServer.cpp.s
 
 src/net/Thread.o: src/net/Thread.cpp.o
@@ -531,7 +531,7 @@ src/net/Thread.o: src/net/Thread.cpp.o
 
 # target to build an object file
 src/net/Thread.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Thread.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Thread.cpp.o
 .PHONY : src/net/Thread.cpp.o
 
 src/net/Thread.i: src/net/Thread.cpp.i
@@ -539,7 +539,7 @@ src/net/Thread.i: src/net/Thread.cpp.i
 
 # target to preprocess a source file
 src/net/Thread.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Thread.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Thread.cpp.i
 .PHONY : src/net/Thread.cpp.i
 
 src/net/Thread.s: src/net/Thread.cpp.s
@@ -547,7 +547,7 @@ src/net/Thread.s: src/net/Thread.cpp.s
 
 # target to generate assembly for a file
 src/net/Thread.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llt_muduo.dir/build.make CMakeFiles/llt_muduo.dir/src/net/Thread.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniMuduo.dir/build.make CMakeFiles/MiniMuduo.dir/src/net/Thread.cpp.s
 .PHONY : src/net/Thread.cpp.s
 
 test/testserver.o: test/testserver.cpp.o
@@ -582,7 +582,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... llt_muduo"
+	@echo "... MiniMuduo"
 	@echo "... testserver"
 	@echo "... src/base/CurrentThread.o"
 	@echo "... src/base/CurrentThread.i"
