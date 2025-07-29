@@ -89,7 +89,7 @@ git clone https://github.com/amikellt911/MiniMuduo.git
 
   
 
-进入到muduo-core文件
+进入到MiniMuduo文件
 
 ```shell
 
@@ -127,7 +127,10 @@ cd test  &&  ./testserver
 
 ```
 
-  
+telnet 连接服务器
+```shell
+telnet 127.0.0.1 8080
+```
   
 
 ## 功能介绍
