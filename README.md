@@ -22,7 +22,7 @@
 
 * linux kernel version5.15.0-130-generic (ubuntu 22.04)
 
-* gcc (Ubuntu 13.1.0-8ubuntu1~22.04) 13.1.0
+* g++ (Ubuntu 13.1.0-8ubuntu1~22.04) 13.1.0
 
 * cmake version 3.22.1
 
