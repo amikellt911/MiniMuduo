@@ -15,5 +15,6 @@ namespace MiniMuduo{
         using CloseCallback = std::function<void(const TcpConnectionPtr&)>;
         using WriteCompleteCallback = std::function<void(const TcpConnectionPtr&)>;
         using HighWaterMarkCallback = std::function<void(const TcpConnectionPtr&, size_t)>;
+        using TimerCallBack=std::function<void()>;
     }
 }

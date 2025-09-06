@@ -30,5 +30,21 @@ namespace MiniMuduo
                  tm_time->tm_sec);
         return buf;
     }
+
+    Timestamp Timestamp::operator+(double interval)
+    {
+        return Timestamp(microSecondsSinceEpoch_ + static_cast<int64_t>(interval * kMicroSecondsPerSecond));
+
+    }
+
+    bool Timestamp::operator<(const Timestamp &that) const
+    {
+        return microSecondsSinceEpoch_ < that.microSecondsSinceEpoch_;
+    }
+
+    int64_t Timestamp::microSecondsSinceEpoch() const
+    {
+        return microSecondsSinceEpoch_;
+    }
     }
 }
