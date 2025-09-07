@@ -1,6 +1,7 @@
 #include "MiniMuduo/net/EventLoop.h"
 #include "MiniMuduo/net/Channel.h"
 #include "MiniMuduo/net/Poller.h"
+#include "MiniMuduo/net/TimerQueue.h"
 #include "sys/eventfd.h"
 namespace MiniMuduo
 {
@@ -11,6 +12,8 @@ namespace MiniMuduo
         // 10000毫秒，10秒
         const int kPollTimeMs = 10000;
         // 先想一想构造和析构函数
+
+        std::atomic<int64_t> EventLoop::s_TimerIdCreated_ = 0;
 
         static int createEventfd()
         {
@@ -40,7 +43,8 @@ namespace MiniMuduo
                                  //和变量声明顺序有关，因为反了，导致wakeupChannel初始化时，wakeupFd还未初始化，导致错误·
                                  wakeupFd_(createEventfd()),
                                  wakeupChannel_(new Channel(this, wakeupFd_)),
-                                 poller_(Poller::newDefaultPoller(this))
+                                 poller_(Poller::newDefaultPoller(this)),
+                                 timerQueue_(std::make_unique<TimerQueue>(this))
         //,pollReturnTime_(Timestamp::now())
         {
             std::string msg = "EventLoop created " + std::to_string(threadId_);
@@ -178,6 +182,28 @@ namespace MiniMuduo
                 assert(channels_.find(channel->fd()) == channels_.end() || channel->isNoneEvent());
             }
             poller_->removeChannel(channel);
+        }
+
+        void EventLoop::runAfter(double delay, Functor cb){
+            runAt(MiniMuduo::base::Timestamp::now()+ delay,std::move(cb));  
+        }
+
+        void EventLoop::runAt(MiniMuduo::base::Timestamp time, Functor cb){
+            timerQueue_->addTimer(EventLoop::s_TimerIdCreated_.fetch_add(1)+1,std::move(cb),time,0.0);
+        }
+
+        void EventLoop::runEvery(double interval, Functor cb){
+            timerQueue_->addTimer(EventLoop::s_TimerIdCreated_.fetch_add(1)+1,std::move(cb),MiniMuduo::base::Timestamp::now()+interval,interval);
+        }
+
+        void EventLoop::cancelTimer(int64_t timerId)
+        {
+            timerQueue_->cancelTimer(timerId);
+        }
+
+        void EventLoop::resetTimer(int64_t timerId,MiniMuduo::base::Timestamp when,double interval)
+        {
+            timerQueue_->resetTimer(timerId,when,interval);
         }
     }
 

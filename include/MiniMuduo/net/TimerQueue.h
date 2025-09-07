@@ -18,8 +18,9 @@ namespace net {
         explicit TimerQueue(EventLoop *loop);
         ~TimerQueue();
         //唯一暴露在外接口
-        void addTimer(MiniMuduo::net::TimerCallBack cb, MiniMuduo::base::Timestamp when, double interval);
-
+        void addTimer(int64_t sequence,MiniMuduo::net::TimerCallBack cb, MiniMuduo::base::Timestamp when, double interval);
+        void cancelTimer(int64_t sequence);
+        void resetTimer(int64_t sequence,MiniMuduo::base::Timestamp when,double interval);
     private:
 
         EventLoop *loop_;
@@ -34,6 +35,8 @@ namespace net {
         TimerList timers_;// 只负责排序，存裸指针
         ActiveTimerSet activeTimers_; // 只负责对象生命周期
 
+        std::unordered_map<int64_t,Timer*> timerIdFind; 
+
     private:
         void addTimerInLoop(std::unique_ptr<Timer> timer);
         void handleRead();
@@ -45,6 +48,10 @@ namespace net {
 
         void resetTimerfd(MiniMuduo::base::Timestamp expiration);
         void readTimerfd();
+
+        void cancelTimerInLoop(int64_t sequence);
+
+        void resetTimerInLoop(int64_t sequence,MiniMuduo::base::Timestamp when,double interval);
 
     };
     

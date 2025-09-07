@@ -2,14 +2,14 @@
 
 namespace MiniMuduo{
     namespace net{
-        std::atomic<int64_t> Timer::s_numCreated_(0);
-            Timer::Timer(TimerCallBack cb,MiniMuduo::base::Timestamp when,double interval)
+        //std::atomic<int64_t> Timer::s_numCreated_(0);
+            Timer::Timer(int64_t sequence,TimerCallBack cb,MiniMuduo::base::Timestamp when,double interval)
             :cb_(std::move(cb)),
             expiration_(when),
             interval_(interval),
             canceled_(false),
             repeated_(interval>0.0),
-            sequence_(s_numCreated_.fetch_add(1)+1)
+            sequence_(sequence)
             {
 
             }
@@ -52,6 +52,14 @@ namespace MiniMuduo{
                 return sequence_;
             }
 
-        
+            bool Timer::isValid() const
+            {
+                return !canceled_;
+            }
+
+            std::function<void()> Timer::getCallBack() const
+            {
+                return cb_;
+            }
     }
 }

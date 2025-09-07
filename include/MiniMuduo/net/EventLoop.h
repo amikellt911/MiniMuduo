@@ -18,8 +18,12 @@ namespace MiniMuduo
 
         class Channel;
         class Poller;
+        class TimerQueue;
         class EventLoop : MiniMuduo::base::noncopyable
         {
+        public:
+            //Timerid
+            static std::atomic<int64_t> s_TimerIdCreated_;
         public:
             using Functor = std::function<void()>;
 
@@ -40,6 +44,12 @@ namespace MiniMuduo
             void assertInLoopThread() const { assert(isInLoopThread()); };
 
             bool isInLoopThread() const { return threadId_ == MiniMuduo::base::CurrentThread::tid(); }
+
+            void runAt(MiniMuduo::base::Timestamp time, Functor cb);
+            void runAfter(double delay, Functor cb);
+            void runEvery(double interval, Functor cb);
+            void cancelTimer(int64_t timerId);
+            void resetTimer(int64_t timerId,MiniMuduo::base::Timestamp when,double interval);
 
         private:
             void handleRead();
@@ -82,6 +92,9 @@ namespace MiniMuduo
 
             // 锁，保证等待队列在queueinLoop的安全
             std::mutex mutex_;
+
+            std::unique_ptr<TimerQueue> timerQueue_;
+
         };
 
     } // namespace net

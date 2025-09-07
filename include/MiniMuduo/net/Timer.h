@@ -8,7 +8,7 @@ namespace MiniMuduo{
         class Timer{
             public:
                 using TimerCallBack=std::function<void()>;
-                Timer(TimerCallBack cb,MiniMuduo::base::Timestamp when,double interval);
+                Timer(int64_t sequence,TimerCallBack cb,MiniMuduo::base::Timestamp when,double interval);
                 //Timer();
                 void run() const;
                 MiniMuduo::base::Timestamp expiration() const;//过期的意思
@@ -16,6 +16,8 @@ namespace MiniMuduo{
                 void reset(MiniMuduo::base::Timestamp now);
                 void cancel();
                 int64_t sequence() const;
+                bool isValid() const;
+                TimerCallBack getCallBack() const;
             private:
                 MiniMuduo::base::Timestamp expiration_;
                 const double interval_;
@@ -23,7 +25,7 @@ namespace MiniMuduo{
                 bool canceled_;
                 const bool repeated_;
                 const int64_t sequence_;
-                static std::atomic<int64_t> s_numCreated_;
+                //static std::atomic<int64_t> s_numCreated_;
 
         };
     }

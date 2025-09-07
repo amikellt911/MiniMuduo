@@ -15,9 +15,9 @@ namespace MiniMuduo {
         timerfdChannel_.setReadCallback(std::bind(&TimerQueue::handleRead,this));
     }
 
-    void TimerQueue::addTimer(MiniMuduo::net::TimerCallBack cb, MiniMuduo::base::Timestamp when, double interval)
+    void TimerQueue::addTimer(int64_t sequence,MiniMuduo::net::TimerCallBack cb, MiniMuduo::base::Timestamp when, double interval)
     {
-        auto timer = std::make_unique<Timer>(std::move(cb),when,interval);
+        auto timer = std::make_unique<Timer>(sequence,std::move(cb),when,interval);
         //使用 lambda 表达式来代替 std::bind,因为bind的拷贝和unique_ptr的移动，会产生各种奇怪的错误，这也是effective C++推崇的
         //放弃bind,选择lambda
         //mutable是因为lambda的 operator默认是const的
@@ -27,19 +27,57 @@ namespace MiniMuduo {
             addTimerInLoop(std::move(timer_ptr));
         });
     }
-    
+
     void TimerQueue::addTimerInLoop(std::unique_ptr<Timer> timer)
     { 
         loop_->assertInLoopThread();
         //move前获取
         MiniMuduo::base::Timestamp when = timer->expiration();
         Timer* p_timer = timer.get();
+        timerIdFind[timer->sequence()]=p_timer;
         activeTimers_[p_timer]=std::move(timer);
         bool eraliestChanged=insert(p_timer);
         if(eraliestChanged&&!callingExpiredTimers_)
         {
             resetTimerfd(when);
         }
+    }
+
+    void TimerQueue::cancelTimer(int64_t sequence)
+    {
+        loop_->runInLoop([this,sequence]() {
+            cancelTimerInLoop(sequence);
+        });
+    }
+
+    void TimerQueue::cancelTimerInLoop(int64_t sequence)
+    {
+        loop_->assertInLoopThread();
+        auto it = timerIdFind.find(sequence);
+        if(it!=timerIdFind.end())
+        {
+            auto timer = it->second;
+            timer->cancel();
+        }
+        else 
+        {
+            LOG_ERROR("TimerQueue::cancelTimer() -> can not find timer");
+        }
+    }
+
+    void TimerQueue::resetTimer(int64_t sequence,MiniMuduo::base::Timestamp when,double interval)
+    {
+        loop_->runInLoop([this,sequence,when,interval]() {
+            resetTimerInLoop(sequence,when,interval);
+        });
+    }
+
+    void TimerQueue::resetTimerInLoop(int64_t sequence,MiniMuduo::base::Timestamp when,double interval)
+    {
+        loop_->assertInLoopThread();
+        std::function<void()> cb=timerIdFind[sequence]->getCallBack();
+        cancelTimerInLoop(sequence);
+        addTimer(EventLoop::s_TimerIdCreated_.fetch_add(1)+1,std::move(cb),when,interval);
     }
 
     bool TimerQueue::insert(Timer* timer)
@@ -84,7 +122,7 @@ namespace MiniMuduo {
         for (auto it = timers_.begin(); it != end; ++it) {
             expired.push_back(*it);
         }
-        //删了可能有问题，因为我需要他的原来的裸指针才能一一对应
+        //
         timers_.erase(timers_.begin(),end);
         return expired;
     }
@@ -93,7 +131,7 @@ namespace MiniMuduo {
     {
         for(Entry &expiredTimer : expired)
         {
-            if(expiredTimer.second->repeat())
+            if(expiredTimer.second->repeat()&&expiredTimer.second->isValid())
             {
                 //bug，因为first是时间戳，first没有变
                 // expiredTimer.second->reset(now);
@@ -105,14 +143,18 @@ namespace MiniMuduo {
             else
             {
                 //不然就删除
+                size_t n2=timerIdFind.erase(expiredTimer.second->sequence());
                 size_t n=activeTimers_.erase(expiredTimer.second);
-                if(n!=1)
+                if(n+n2!=2)
                 {
                     LOG_ERROR("TimerQueue::handleRead() -> reset deletes "+std::to_string(n)+" timers instead of 1");
                 }
             }
         }
     }
+
+
+
 
     void TimerQueue::readTimerfd()
     {
