@@ -66,16 +66,14 @@ namespace MiniMuduo {
                 timer->cancel();
             else {
                 Entry entry(when,timer);
+                bool wasEarliest = (!timers_.empty() && timers_.begin()->second == timer);
                 timers_.erase(entry);
-                //如果为空，或者是时间不一致(when时间相等或者是when时间更晚是不需要设置定时器），需要重新设置定时器
-                if(!(!timers_.empty()&&(timers_.begin()->second->expiration()==when||timers_.begin()->second->expiration()<when)))
-                {   //如果为空,给他设置的一个特别长的值或者什么呢？将fd不可读，或者设置一下channel不关注？
-                    if(timers_.empty())
-                    {
-                        resetTimerfd(MiniMuduo::base::Timestamp::invalid());
-                    }else 
-                    {
-                        resetTimerfd(timers_.begin()->second->expiration());
+                if (wasEarliest) {
+                    if (!timers_.empty()) {
+                        resetTimerfd(timers_.begin()->first);
+                    } else {
+                        // 所有定时器都没了，让 timerfd 失效
+                        resetTimerfd(MiniMuduo::base::Timestamp::invalid()); // 传一个无效/过去的时间
                     }
                 }
 
