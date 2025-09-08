@@ -52,7 +52,7 @@ namespace MiniMuduo
 
 #define LOG_DEBUG(msg)                                                                      \
     do                                                                                      \
-    {                                                                                       \
+    {                                                                                        \
         if (MiniMuduo::base::Logger::instance().shouldLog(MiniMuduo::base::LogLevel::DEBUG)) \
         {                                                                                   \
             MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::DEBUG); \

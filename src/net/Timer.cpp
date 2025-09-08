@@ -43,6 +43,11 @@ namespace MiniMuduo{
                     expiration_=now+interval_;
                 }
             }
+            void Timer::reset(MiniMuduo::base::Timestamp when,double interval)
+            {
+                expiration_=when;
+                interval_=interval;
+            }
             void Timer::cancel()
             {
                 canceled_=true;

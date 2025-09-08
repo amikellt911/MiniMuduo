@@ -1,4 +1,4 @@
-#include <time.h>
+#include <sys/time.h>
 
 #include "MiniMuduo/base/Timestamp.h"
 namespace MiniMuduo
@@ -13,9 +13,29 @@ namespace MiniMuduo
     {
     }
 
+    // Timestamp::Timestamp(const Timestamp &that)
+    // : microSecondsSinceEpoch_(that.microSecondsSinceEpoch())
+    // {
+    // }
+
+    Timestamp& Timestamp::operator=(const Timestamp &that)
+    {
+        microSecondsSinceEpoch_ = that.microSecondsSinceEpoch_;
+        return *this;
+    }
+
     Timestamp Timestamp::now()
     {
-        return Timestamp(time(NULL));
+        // return Timestamp(time(NULL));
+        struct timeval tv;
+        // gettimeofday 可以获取到微秒精度的时间
+        gettimeofday(&tv, NULL);
+        int64_t seconds = tv.tv_sec;
+        return Timestamp(seconds * kMicroSecondsPerSecond + tv.tv_usec);
+    }
+    Timestamp Timestamp::invalid()
+    {
+        return Timestamp();
     }
     std::string Timestamp::toString() const
     {
@@ -47,5 +67,15 @@ namespace MiniMuduo
         return microSecondsSinceEpoch_;
     }
 
+
+    bool Timestamp::operator==(const Timestamp &that) const
+    {
+        return microSecondsSinceEpoch() == that.microSecondsSinceEpoch();
+
+    }
+    bool Timestamp::operator!=(const Timestamp &that) const
+    {
+        return microSecondsSinceEpoch() != that.microSecondsSinceEpoch();
+    }
     }
 }

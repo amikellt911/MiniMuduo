@@ -36,6 +36,8 @@ namespace net {
         ActiveTimerSet activeTimers_; // 只负责对象生命周期
 
         std::unordered_map<int64_t,Timer*> timerIdFind; 
+        //真正的过期时间
+        MiniMuduo::base::Timestamp expiration_;
 
     private:
         void addTimerInLoop(std::unique_ptr<Timer> timer);

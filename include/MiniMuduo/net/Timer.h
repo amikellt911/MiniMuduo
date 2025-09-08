@@ -14,13 +14,14 @@ namespace MiniMuduo{
                 MiniMuduo::base::Timestamp expiration() const;//过期的意思
                 bool repeat() const;
                 void reset(MiniMuduo::base::Timestamp now);
+                void reset(MiniMuduo::base::Timestamp when,double interval);
                 void cancel();
                 int64_t sequence() const;
                 bool isValid() const;
                 TimerCallBack getCallBack() const;
             private:
                 MiniMuduo::base::Timestamp expiration_;
-                const double interval_;
+                double interval_;
                 TimerCallBack cb_;
                 bool canceled_;
                 const bool repeated_;

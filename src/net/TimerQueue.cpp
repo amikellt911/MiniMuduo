@@ -10,9 +10,12 @@ namespace MiniMuduo {
         timerfd_(::timerfd_create(CLOCK_MONOTONIC,TFD_NONBLOCK | TFD_CLOEXEC)),
         timerfdChannel_(loop,timerfd_),
         timers_(),
-        callingExpiredTimers_(false)
+        callingExpiredTimers_(false),
+        expiration_(0)//同理invaild
     {
         timerfdChannel_.setReadCallback(std::bind(&TimerQueue::handleRead,this));
+        timerfdChannel_.enableReading();
+        resetTimerfd(MiniMuduo::base::Timestamp::invalid());
     }
 
     void TimerQueue::addTimer(int64_t sequence,MiniMuduo::net::TimerCallBack cb, MiniMuduo::base::Timestamp when, double interval)
@@ -56,8 +59,29 @@ namespace MiniMuduo {
         auto it = timerIdFind.find(sequence);
         if(it!=timerIdFind.end())
         {
-            auto timer = it->second;
-            timer->cancel();
+            Timer* timer = it->second;
+            MiniMuduo::base::Timestamp now = MiniMuduo::base::Timestamp::now();
+            MiniMuduo::base::Timestamp when = timer->expiration();
+            if(now+5.0*MiniMuduo::base::Timestamp::kMicroSecondsPerSecond < when)
+                timer->cancel();
+            else {
+                Entry entry(when,timer);
+                timers_.erase(entry);
+                //如果为空，或者是时间不一致(when时间相等或者是when时间更晚是不需要设置定时器），需要重新设置定时器
+                if(!(!timers_.empty()&&(timers_.begin()->second->expiration()==when||timers_.begin()->second->expiration()<when)))
+                {   //如果为空,给他设置的一个特别长的值或者什么呢？将fd不可读，或者设置一下channel不关注？
+                    if(timers_.empty())
+                    {
+                        resetTimerfd(MiniMuduo::base::Timestamp::invalid());
+                    }else 
+                    {
+                        resetTimerfd(timers_.begin()->second->expiration());
+                    }
+                }
+
+                timerIdFind.erase(sequence);
+                activeTimers_.erase(timer);
+            }
         }
         else 
         {
@@ -66,18 +90,30 @@ namespace MiniMuduo {
     }
 
     void TimerQueue::resetTimer(int64_t sequence,MiniMuduo::base::Timestamp when,double interval)
-    {
+    {//可能要改为int作为返回值，因为reset之后,sequence会变
         loop_->runInLoop([this,sequence,when,interval]() {
             resetTimerInLoop(sequence,when,interval);
         });
     }
-
+    //时间早了或者晚了，这种异常的封装处理，还是交给上层吧，底层还是不要太多的处理
     void TimerQueue::resetTimerInLoop(int64_t sequence,MiniMuduo::base::Timestamp when,double interval)
     {
         loop_->assertInLoopThread();
-        std::function<void()> cb=timerIdFind[sequence]->getCallBack();
-        cancelTimerInLoop(sequence);
-        addTimer(EventLoop::s_TimerIdCreated_.fetch_add(1)+1,std::move(cb),when,interval);
+        auto it = timerIdFind.find(sequence);
+        if(it!=timerIdFind.end())
+        {
+            // std::function<void()> cb=timerIdFind[sequence]->getCallBack();
+            // cancelTimerInLoop(sequence);
+            // //因为sequence是父loop持有，所以不能轻易改变
+            // addTimer(sequence,std::move(cb),when,interval);
+            Timer* timer=timerIdFind[sequence];
+            MiniMuduo::base::Timestamp when1=timer->expiration();
+            Entry entry(when1,timer);
+            timers_.erase(entry);
+            timers_.insert({when,timer});
+            activeTimers_[timer].get()->reset(when,interval);
+            resetTimerfd(timers_.begin()->second->expiration()); 
+        }
     }
 
     bool TimerQueue::insert(Timer* timer)
@@ -143,6 +179,9 @@ namespace MiniMuduo {
             else
             {
                 //不然就删除
+                //如果之前只是设置canceled标志位，那么要删除
+                //如果是reset后
+                //if(timerIdFind.count(expiredTimer.second->sequence()))
                 size_t n2=timerIdFind.erase(expiredTimer.second->sequence());
                 size_t n=activeTimers_.erase(expiredTimer.second);
                 if(n+n2!=2)
@@ -168,6 +207,7 @@ namespace MiniMuduo {
 
     void TimerQueue::resetTimerfd(MiniMuduo::base::Timestamp expiration)
     {
+        expiration_=expiration;
         struct itimerspec newValue;
         struct itimerspec oldValue;
         
@@ -176,6 +216,7 @@ namespace MiniMuduo {
         oldValue = {};
 
         // 设置第一次超时时间
+        if(expiration!=MiniMuduo::base::Timestamp::invalid())
         newValue.it_value = howMuchTimeFromNow(expiration);
         
         // 调用系统调用来设置定时器
@@ -183,6 +224,7 @@ namespace MiniMuduo {
         // 第二个参数 flags = 0，表示 newValue.it_value 是一个相对时间
         // 第三个参数是新的设置
         // 第四个参数是旧的设置（我们不关心，所以传 nullptr 或者一个空结构体指针）
+        // 传0定时器会失效
         int ret = ::timerfd_settime(timerfd_, 0, &newValue, &oldValue);
         //0表示成功，-1表示失败
         if (ret) {

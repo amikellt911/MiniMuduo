@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 # 2. 项目名称
 project(MiniMuduo LANGUAGES CXX) # 项目名称是 MiniMuduo
 
-# 3. 设置 C++ 标准
+# 3. 设置 C++ 标准（any需要C++17）
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 # set(CMAKE_CXX_EXTENSIONS OFF)

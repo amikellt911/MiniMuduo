@@ -268,6 +268,9 @@ namespace MiniMuduo
                 else{
                     //只是一个连接出现问题，可能有很多种可能，不至于fatal
                     LOG_ERROR("TcpConnection::handleWrite");
+                    //EAGAIN表示资源当前不可用，即当前缓冲区没有数据，在非阻塞情况下很有可能出现这个问题
+                    //EWOULDBLOCK操作会阻塞（非阻塞模式下不可立即完成）
+                    //两者的处理方式都是稍后重试或等待
                     if(savedErrno != EWOULDBLOCK&&  savedErrno != EAGAIN){
                         handleError();
                     }
