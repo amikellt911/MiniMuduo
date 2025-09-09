@@ -29,7 +29,7 @@ namespace MiniMuduo
                     numThreads = nums;
                 }
 
-                void start(const ThreadInitCallback &cb = ThreadInitCallback(),double cancelThreshold);
+                void start(const ThreadInitCallback &cb,double cancelThreshold);
 
                 EventLoop *getNextLoop();
 
