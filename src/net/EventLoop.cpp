@@ -112,8 +112,7 @@ namespace MiniMuduo
                 wakeup();
             }
         }
-
-        void EventLoop::runInLoop(Functor cb)
+        void EventLoop::runInLoop(Functor &&cb)
         {
             if (isInLoopThread())
             {
@@ -124,11 +123,33 @@ namespace MiniMuduo
                 queueInLoop(std::move(cb));
             }
         }
-        void EventLoop::queueInLoop(Functor cb)
+        void EventLoop::queueInLoop(Functor &&cb)
         {
             {
                 std::unique_lock<std::mutex> lock(mutex_);
                 pendingFunctors_.emplace_back(std::move(cb));
+            }
+            if (!isInLoopThread() || callingPendingFunctors_)
+            {
+                wakeup();
+            }
+        }
+        void EventLoop::runInLoop(const Functor& cb)
+        {
+            if (isInLoopThread())
+            {
+                cb();
+            }
+            else
+            {
+                queueInLoop(cb);
+            }
+        }
+        void EventLoop::queueInLoop(const Functor& cb)
+        {
+            {
+                std::unique_lock<std::mutex> lock(mutex_);
+                pendingFunctors_.emplace_back(cb);
             }
             if (!isInLoopThread() || callingPendingFunctors_)
             {
@@ -198,6 +219,9 @@ namespace MiniMuduo
 
         void EventLoop::cancelTimer(int64_t timerId)
         {
+            //有竞态问题
+            //因为runinloop需要时间，可能传入正好，timefd响应了
+            //但是这种问题应该归于用户，因为他太慢了，理清责任边界
             timerQueue_->cancelTimer(timerId);
         }
 

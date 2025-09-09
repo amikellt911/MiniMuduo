@@ -15,7 +15,26 @@ namespace MiniMuduo {
     {
         timerfdChannel_.setReadCallback(std::bind(&TimerQueue::handleRead,this));
         timerfdChannel_.enableReading();
+        //初始不关注
         resetTimerfd(MiniMuduo::base::Timestamp::invalid());
+    }
+
+    TimerQueue::~TimerQueue() {
+        // 1. 先把 Channel 从 Poller 中移除，停止所有事件通知
+        timerfdChannel_.disableAll();
+        timerfdChannel_.remove();
+        
+        // 2. 关闭文件描述符
+        ::close(timerfd_);
+
+        // 3. 清理所有 Timer 对象
+        activeTimers_.clear();
+        
+        // 4. 清理裸指针容器
+        timers_.clear();
+        timerIdFind.clear();
+
+        // loop_ 等其他成员会自动析构
     }
 
     void TimerQueue::addTimer(int64_t sequence,MiniMuduo::net::TimerCallBack cb, MiniMuduo::base::Timestamp when, double interval)
@@ -24,10 +43,16 @@ namespace MiniMuduo {
         //使用 lambda 表达式来代替 std::bind,因为bind的拷贝和unique_ptr的移动，会产生各种奇怪的错误，这也是effective C++推崇的
         //放弃bind,选择lambda
         //mutable是因为lambda的 operator默认是const的
-        loop_->runInLoop([this, timer_ptr = std::move(timer)]() mutable {
+        //非常hacky的操作，
+        //因为lambda获取参数必须要是拷贝，但是unique_ptr不能拷贝，只能移动
+        //所以包装一层shared拷贝
+        //然后再里面在move掉
+        //unique_ptr的析构函数里面有一个if(!=nullptr)再执行delete操作，但是move之后默认置空了，所以没有内存泄露的问题
+        auto shared_unique_ptr=std::make_shared<std::unique_ptr<Timer>>(std::move(timer));
+        loop_->runInLoop([this, shared_unique_ptr]() mutable {
             // 在 lambda 体内，调用真正的处理函数
             // 这里必须用 std::move，因为 addTimerInLoop 的参数是 unique_ptr 按值传递
-            addTimerInLoop(std::move(timer_ptr));
+            addTimerInLoop(std::move(*shared_unique_ptr));
         });
     }
 
@@ -49,6 +74,11 @@ namespace MiniMuduo {
     void TimerQueue::cancelTimer(int64_t sequence)
     {
         loop_->runInLoop([this,sequence]() {
+            //如果因为这个函数太慢，导致headread被调用，那就是你的问题了，而且inloop函数里面也有一个判断
+            // if (!hasTimer(sequence)) {
+            //     LOG_ERROR("TimerQueue::cancelTimer() -> can not find timer");
+            //     return;
+            // }
             cancelTimerInLoop(sequence);
         });
     }
@@ -90,6 +120,10 @@ namespace MiniMuduo {
     void TimerQueue::resetTimer(int64_t sequence,MiniMuduo::base::Timestamp when,double interval)
     {//可能要改为int作为返回值，因为reset之后,sequence会变
         loop_->runInLoop([this,sequence,when,interval]() {
+            // if (!hasTimer(sequence)) {
+            //     LOG_ERROR("TimerQueue::resetTimer() -> can not find timer");
+            //     return;
+            // }
             resetTimerInLoop(sequence,when,interval);
         });
     }
@@ -98,6 +132,7 @@ namespace MiniMuduo {
     {
         loop_->assertInLoopThread();
         auto it = timerIdFind.find(sequence);
+        //防御性编程，防止lambda表达式的时间和timefd的竞态关系
         if(it!=timerIdFind.end())
         {
             // std::function<void()> cb=timerIdFind[sequence]->getCallBack();
@@ -111,6 +146,24 @@ namespace MiniMuduo {
             timers_.insert({when,timer});
             activeTimers_[timer].get()->reset(when,interval);
             resetTimerfd(timers_.begin()->second->expiration()); 
+        }
+        else 
+        {
+            LOG_ERROR("TimerQueue::resetTimer() -> can not find timer");
+        }
+    }
+
+    bool TimerQueue::hasTimer(int64_t sequence)
+    {
+        loop_->assertInLoopThread();
+        auto it = timerIdFind.find(sequence);
+        if(it!=timerIdFind.end())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -203,6 +256,26 @@ namespace MiniMuduo {
         }
     }
 
+
+    // 辅助函数：计算从现在到指定超时时间的时间差
+    static struct timespec howMuchTimeFromNow(MiniMuduo::base::Timestamp when) {
+    // 获取从 Epoch 到现在的微秒数
+    int64_t microseconds = when.microSecondsSinceEpoch()
+                         - MiniMuduo::base::Timestamp::now().microSecondsSinceEpoch();
+    
+    // 如果时间差小于 100 微秒，我们就把它当作立即超时
+    if (microseconds < 100) {
+        microseconds = 100;
+    }
+    
+    struct timespec ts;
+    ts.tv_sec = static_cast<time_t>(
+        microseconds / MiniMuduo::base::Timestamp::kMicroSecondsPerSecond);
+    ts.tv_nsec = static_cast<long>(
+        (microseconds % MiniMuduo::base::Timestamp::kMicroSecondsPerSecond) * 1000);
+    return ts;
+    }
+    
     void TimerQueue::resetTimerfd(MiniMuduo::base::Timestamp expiration)
     {
         expiration_=expiration;
@@ -230,23 +303,6 @@ namespace MiniMuduo {
         }
     }
 
-    // 辅助函数：计算从现在到指定超时时间的时间差
-    static struct timespec howMuchTimeFromNow(MiniMuduo::base::Timestamp when) {
-    // 获取从 Epoch 到现在的微秒数
-    int64_t microseconds = when.microSecondsSinceEpoch()
-                         - MiniMuduo::base::Timestamp::now().microSecondsSinceEpoch();
-    
-    // 如果时间差小于 100 微秒，我们就把它当作立即超时
-    if (microseconds < 100) {
-        microseconds = 100;
-    }
-    
-    struct timespec ts;
-    ts.tv_sec = static_cast<time_t>(
-        microseconds / MiniMuduo::base::Timestamp::kMicroSecondsPerSecond);
-    ts.tv_nsec = static_cast<long>(
-        (microseconds % MiniMuduo::base::Timestamp::kMicroSecondsPerSecond) * 1000);
-    return ts;
-    }
+
 }
 }

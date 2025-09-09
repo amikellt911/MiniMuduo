@@ -33,8 +33,10 @@ namespace MiniMuduo
             void loop();
             void quit();
 
-            void runInLoop(Functor cb);
-            void queueInLoop(Functor cb);
+            void runInLoop(const Functor& cb);
+            void queueInLoop(const Functor& cb);
+            void runInLoop(Functor&& cb);
+            void queueInLoop(Functor&& cb);
 
             void wakeup();
 

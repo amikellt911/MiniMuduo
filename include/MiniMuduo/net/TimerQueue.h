@@ -21,6 +21,7 @@ namespace net {
         void addTimer(int64_t sequence,MiniMuduo::net::TimerCallBack cb, MiniMuduo::base::Timestamp when, double interval);
         void cancelTimer(int64_t sequence);
         void resetTimer(int64_t sequence,MiniMuduo::base::Timestamp when,double interval);
+        
     private:
 
         EventLoop *loop_;
@@ -55,6 +56,7 @@ namespace net {
 
         void resetTimerInLoop(int64_t sequence,MiniMuduo::base::Timestamp when,double interval);
 
+        bool hasTimer(int64_t sequence);
     };
     
 
