@@ -47,12 +47,13 @@ namespace MiniMuduo
 
             bool isInLoopThread() const { return threadId_ == MiniMuduo::base::CurrentThread::tid(); }
 
-            void runAt(MiniMuduo::base::Timestamp time, Functor cb);
-            void runAfter(double delay, Functor cb);
-            void runEvery(double interval, Functor cb);
+            int64_t runAt(MiniMuduo::base::Timestamp time, Functor cb);
+            int64_t runAfter(double delay, Functor cb);
+            int64_t runEvery(double interval, Functor cb);
             void cancelTimer(int64_t timerId);
             void resetTimer(int64_t timerId,MiniMuduo::base::Timestamp when,double interval);
-
+            void setCancelThreshold(double seconds);
+            
         private:
             void handleRead();
             void doPendingFunctors();

@@ -50,6 +50,8 @@ namespace MiniMuduo
                     writeCompleteCallback_ = std::move(cb);
                 }
 
+                void setIdleTimeout(double seconds) { idleTimeout_ = seconds; }
+                void setCancelThreshold(double seconds){ cancelThreshold_ = seconds; }
             
             private:
                 void newConnection(int sockfd,const InetAddress &peerAddr);
@@ -77,6 +79,9 @@ namespace MiniMuduo
                 std::atomic_int started_;
                 int nextConnId_;
                 ConnectionMap connections_;
+                // 默认不超时
+                double idleTimeout_ = 0.0;
+                double cancelThreshold_ = 5.0;
         };
     }
 }

@@ -23,7 +23,8 @@ namespace MiniMuduo
                                      const std::string &nameArg,
                                      int sockfd,
                                      const InetAddress &localAddr,
-                                     const InetAddress &peerAddr)
+                                     const InetAddress &peerAddr,
+                                     const double idleTimeout)
             : loop_(checkLoopNotNull(loop)),
               name_(nameArg),
               state_(kConnecting),
@@ -32,7 +33,8 @@ namespace MiniMuduo
               channel_(new Channel(loop, sockfd)),
               localAddr_(localAddr),
               peerAddr_(peerAddr),
-              highWaterMark_(64 * 1024 * 1024) // 64M
+              highWaterMark_(64 * 1024 * 1024), // 64M
+              idleTimeout_(idleTimeout)
         {
             channel_->setReadCallback(
                 std::bind(&TcpConnection::handleRead, this, std::placeholders::_1));
@@ -209,7 +211,10 @@ namespace MiniMuduo
             setState(kConnected);
             channel_->tie(shared_from_this());
             channel_->enableReading();
-
+            if(idleTimeout_ > 0)
+            {
+                resetIdleTimer(MiniMuduo::base::Timestamp::now());
+            }
             connectionCallback_(shared_from_this());
         }    
 
@@ -233,6 +238,10 @@ namespace MiniMuduo
             ssize_t n = inputBuffer_.readFd(channel_->fd(), &savedErrno);
             if(n > 0)
             {
+                if(idleTimeout_ > 0)
+                {
+                    resetIdleTimer(receiveTime);
+                }
                 messageCallback_(shared_from_this(), &inputBuffer_, receiveTime);
             }
             else if(n==0){
@@ -253,6 +262,10 @@ namespace MiniMuduo
                 ssize_t n = outputBuffer_.writeFd(channel_->fd(),&savedErrno);
                 if (n > 0)
                 {
+                    if(idleTimeout_ > 0)
+                    {
+                        resetIdleTimer(MiniMuduo::base::Timestamp::now());
+                    }
                     outputBuffer_.retrieve(n);
                     if (outputBuffer_.readableBytes() == 0)
                     {
@@ -306,6 +319,30 @@ namespace MiniMuduo
             }
             LOG_ERROR(std::string("TcpConnection::handleError name=")+name_+" - SO_ERROR="+std::to_string(err));
             handleClose();
+        }
+
+        void TcpConnection::resetIdleTimer(MiniMuduo::base::Timestamp now) {
+            loop_->assertInLoopThread();
+            
+            // 1. 如果之前已经有定时器，先取消它
+            if (idleTimerId_) {
+                loop_->cancelTimer(*idleTimerId_);
+            }
+
+            // 2. 创建一个新的超时回调
+            //    【关键】使用 weak_ptr 防止循环引用，并安全地检查对象存活
+            std::weak_ptr<TcpConnection> weakSelf = shared_from_this();
+            auto idleCallback = [weakSelf]() {
+                TcpConnectionPtr self = weakSelf.lock();
+                if (self) {
+                    // 如果连接还存活，就执行关闭操作
+                    LOG_INFO("Connection " +self->name() + " timed out, shutting down.");
+                    self->shutdown(); 
+                }
+            };
+
+            // 3. 添加一个新的定时器，并保存返回的 TimerId
+            idleTimerId_ = loop_->runAfter(idleTimeout_, std::move(idleCallback));
         }
     }
 

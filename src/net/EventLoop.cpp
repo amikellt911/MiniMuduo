@@ -205,16 +205,18 @@ namespace MiniMuduo
             poller_->removeChannel(channel);
         }
 
-        void EventLoop::runAfter(double delay, Functor cb){
-            runAt(MiniMuduo::base::Timestamp::now()+ delay,std::move(cb));  
+        int64_t EventLoop::runAfter(double delay, Functor cb){
+            return runAt(MiniMuduo::base::Timestamp::now()+ delay,std::move(cb));  
         }
 
-        void EventLoop::runAt(MiniMuduo::base::Timestamp time, Functor cb){
+        int64_t EventLoop::runAt(MiniMuduo::base::Timestamp time, Functor cb){
             timerQueue_->addTimer(EventLoop::s_TimerIdCreated_.fetch_add(1)+1,std::move(cb),time,0.0);
+            return s_TimerIdCreated_.load();
         }
 
-        void EventLoop::runEvery(double interval, Functor cb){
+        int64_t EventLoop::runEvery(double interval, Functor cb){
             timerQueue_->addTimer(EventLoop::s_TimerIdCreated_.fetch_add(1)+1,std::move(cb),MiniMuduo::base::Timestamp::now()+interval,interval);
+            return s_TimerIdCreated_.load();
         }
 
         void EventLoop::cancelTimer(int64_t timerId)
@@ -229,6 +231,12 @@ namespace MiniMuduo
         {
             timerQueue_->resetTimer(timerId,when,interval);
         }
+
+        void EventLoop::setCancelThreshold(double seconds)
+        {
+            timerQueue_->setSmartCancelThreshold(seconds);
+        }
+        
     }
 
 }

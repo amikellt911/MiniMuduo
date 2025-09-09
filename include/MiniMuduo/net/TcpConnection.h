@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <atomic>
+#include <optional> // C++17, 如果没有可以用 pair<bool, int64_t>
 
 #include "MiniMuduo/base/noncopyable.h"
 #include "MiniMuduo/base/Timestamp.h"
@@ -25,7 +26,8 @@ namespace MiniMuduo
                 const std::string &nameArg,
                 int sockfd,
                 const InetAddress &localAddr,
-                const InetAddress &peerAddr
+                const InetAddress &peerAddr,
+                const double idleTimeout
                 );
                 ~TcpConnection();
 
@@ -57,6 +59,7 @@ namespace MiniMuduo
                 }
                 void connectEstablished();
                 void connectDestroyed();
+                void setIdleTimeout(double seconds);
             private:
                 enum StateE
                 {
@@ -75,6 +78,9 @@ namespace MiniMuduo
                 void sendInLoop(const void *data, size_t len);
                 void shutdownInLoop();
                 void sendFileInLoop(int fileDescriptor,off_t offset,size_t size);
+
+                // 封装了定时器创建/重置逻辑的私有方法
+                void resetIdleTimer(MiniMuduo::base::Timestamp now);
 
             private:
                 EventLoop *loop_;
@@ -96,6 +102,10 @@ namespace MiniMuduo
 
                 Buffer inputBuffer_;
                 Buffer outputBuffer_;
+
+                // 新增的超时管理成员
+                std::optional<int64_t> idleTimerId_; // 用于保存和取消定时器
+                const double idleTimeout_;
         };
     } 
 }

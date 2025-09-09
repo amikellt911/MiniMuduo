@@ -92,7 +92,7 @@ namespace MiniMuduo {
             Timer* timer = it->second;
             MiniMuduo::base::Timestamp now = MiniMuduo::base::Timestamp::now();
             MiniMuduo::base::Timestamp when = timer->expiration();
-            if(now+5.0*MiniMuduo::base::Timestamp::kMicroSecondsPerSecond < when)
+            if(now+smartCancelThreshold_*MiniMuduo::base::Timestamp::kMicroSecondsPerSecond < when)
                 timer->cancel();
             else {
                 Entry entry(when,timer);

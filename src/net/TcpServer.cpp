@@ -56,7 +56,7 @@ namespace MiniMuduo
         {
             if (started_.fetch_add(1) == 0)
             { // 防止多次调用
-                threadPool_->start(threadInitCallback_);
+                threadPool_->start(threadInitCallback_,cancelThreshold_);
                 loop_->runInLoop(
                     std::bind(&Acceptor::listen, acceptor_.get()));
             }
@@ -79,7 +79,7 @@ namespace MiniMuduo
                 LOG_ERROR("TcpServer::newConnection - getsockAddr");
             }
             InetAddress localAddr(local);
-            TcpConnectionPtr conn(new TcpConnection(ioLoop, connName, sockfd, localAddr, peerAddr));
+            TcpConnectionPtr conn(new TcpConnection(ioLoop, connName, sockfd, localAddr, peerAddr,idleTimeout_));
             connections_[connName] = conn;
             conn->setConnectionCallback(connectionCallback_);
             conn->setMessageCallback(messageCallback_);

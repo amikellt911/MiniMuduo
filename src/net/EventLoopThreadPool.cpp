@@ -17,7 +17,7 @@ namespace MiniMuduo{
             // Don't delete loop, it's stack variable
         }
 
-        void EventLoopThreadPool::start(const ThreadInitCallback &cb){ 
+        void EventLoopThreadPool::start(const ThreadInitCallback &cb,double cancelThreshold){ 
             assert(!started_);
             started_ = true;
 
@@ -27,6 +27,8 @@ namespace MiniMuduo{
                 EventLoopThread *t = new EventLoopThread(cb, buf);
                 threads_.push_back(std::unique_ptr<EventLoopThread>(t));
                 loops_.push_back(t->startLoop());
+                //后期如果要根据不同用户类型进行阀值不一样的话，可能cancelThreshold*1/2/3这样
+                loops_[i]->setCancelThreshold(cancelThreshold);
             }
             //如果只有baseLoop_，则直接调用回调函数
             if(numThreads == 0 && cb){

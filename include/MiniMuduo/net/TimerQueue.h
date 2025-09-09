@@ -21,7 +21,9 @@ namespace net {
         void addTimer(int64_t sequence,MiniMuduo::net::TimerCallBack cb, MiniMuduo::base::Timestamp when, double interval);
         void cancelTimer(int64_t sequence);
         void resetTimer(int64_t sequence,MiniMuduo::base::Timestamp when,double interval);
-        
+        void setSmartCancelThreshold(double seconds) {
+            smartCancelThreshold_ = seconds;
+        }
     private:
 
         EventLoop *loop_;
@@ -39,6 +41,7 @@ namespace net {
         std::unordered_map<int64_t,Timer*> timerIdFind; 
         //真正的过期时间
         MiniMuduo::base::Timestamp expiration_;
+        double smartCancelThreshold_ = 5.0; 
 
     private:
         void addTimerInLoop(std::unique_ptr<Timer> timer);
