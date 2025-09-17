@@ -23,7 +23,7 @@ namespace MiniMuduo{
     void Logger::setGlobalLogLevel(LogLevel level){
         globalLogLevel_ = level;
     }
-    void Logger::log(const std::string& msg, LogLevel level){
+    void Logger::log(const std::string& msg, LogLevel level,const char* file, int line){
         while(logLock_.test_and_set(std::memory_order_acquire)){
             {
                 std::this_thread::yield();
@@ -52,8 +52,7 @@ namespace MiniMuduo{
         std::stringstream ss;
         ss << "ThreadID:[" << CurrentThread::tid() << "] ";
         threadId = ss.str();
-
-        std::string logMessage =" [" + levelStr + "] : [" +std::string(__FILE__) +":"+ std::to_string(__LINE__) +"] : [" + Timestamp::now().toString() + "] : " + threadId  + msg + "\n";
+        std::string logMessage =" [" + levelStr + "] : [" +std::string(file) +":"+ std::to_string(line) +"] : [" + Timestamp::now().toString() + "] : " + threadId  + msg + "\n";
         std::cout << logMessage;
         logFile_ << logMessage;
         logFile_.flush();

@@ -3,7 +3,7 @@
 #include <memory>
 #include <atomic>
 #include <optional> // C++17, 如果没有可以用 pair<bool, int64_t>
-
+#include <any>
 #include "MiniMuduo/base/noncopyable.h"
 #include "MiniMuduo/base/Timestamp.h"
 #include "MiniMuduo/net/Buffer.h"
@@ -60,6 +60,7 @@ namespace MiniMuduo
                 void connectEstablished();
                 void connectDestroyed();
                 void setIdleTimeout(double seconds);
+                void cancelIdleTimeout();
             private:
                 enum StateE
                 {
@@ -105,7 +106,9 @@ namespace MiniMuduo
 
                 // 新增的超时管理成员
                 std::optional<int64_t> idleTimerId_; // 用于保存和取消定时器
-                const double idleTimeout_;
+                double idleTimeout_;
+                //请求接受处理上下文，协议切换
+                std::any context_;
         };
     } 
 }

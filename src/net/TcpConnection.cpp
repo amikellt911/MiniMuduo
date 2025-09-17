@@ -179,6 +179,8 @@ namespace MiniMuduo
             }
             if (!faultError && remaining > 0)
             {
+                //offset会自动更新
+                //唯一的问题可能是errno,并且errno==EWOULDBLOCK,再次发送的时候用旧的offset,但是其实offset已经改变，已经发送了一些数据
                 loop_->queueInLoop(std::bind(&TcpConnection::sendFileInLoop, shared_from_this(),fileDescriptor, offset, remaining));
             }
         }
@@ -299,7 +301,11 @@ namespace MiniMuduo
             LOG_INFO(std::string("TcpConnection fd=")+std::to_string(channel_->fd())+" is closed");
             setState(kDisconnected);
             channel_->disableAll();
-
+            if(idleTimerId_)
+            {
+                loop_->cancelTimer(*idleTimerId_);
+                idleTimerId_.reset();
+            }
             TcpConnectionPtr guardThis(shared_from_this());
             connectionCallback_(guardThis);
             closeCallback_(guardThis);
@@ -342,7 +348,21 @@ namespace MiniMuduo
             };
 
             // 3. 添加一个新的定时器，并保存返回的 TimerId
-            idleTimerId_ = loop_->runAfter(idleTimeout_, std::move(idleCallback));
+            if(idleTimeout_ > 0)
+            idleTimerId_ = loop_->runAt(now+idleTimeout_, std::move(idleCallback));
+        }
+        void TcpConnection::setIdleTimeout(double seconds)
+        {
+            idleTimeout_ = seconds;
+        }
+        void TcpConnection::cancelIdleTimeout()
+        {
+            loop_->runInLoop([this]() {
+                loop_->assertInLoopThread();
+                setIdleTimeout(0.0);
+                resetIdleTimer(MiniMuduo::base::Timestamp::now());
+                idleTimerId_.reset();
+            });
         }
     }
 

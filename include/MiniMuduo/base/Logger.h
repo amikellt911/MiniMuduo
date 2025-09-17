@@ -32,7 +32,7 @@ namespace MiniMuduo
 
             void setGlobalLogLevel(LogLevel level);
 
-            void log(const std::string &msg, LogLevel level);
+            void log(const std::string &msg, LogLevel level,const char *file, int line);
 
             inline bool shouldLog(LogLevel level)
             {
@@ -55,7 +55,7 @@ namespace MiniMuduo
     {                                                                                        \
         if (MiniMuduo::base::Logger::instance().shouldLog(MiniMuduo::base::LogLevel::DEBUG)) \
         {                                                                                   \
-            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::DEBUG); \
+            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::DEBUG,__FILE__, __LINE__); \
         }                                                                                   \
     } while (0)
 
@@ -64,7 +64,7 @@ namespace MiniMuduo
     {                                                                                      \
         if (MiniMuduo::base::Logger::instance().shouldLog(MiniMuduo::base::LogLevel::INFO)) \
         {                                                                                  \
-            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::INFO); \
+            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::INFO,__FILE__, __LINE__); \
         }                                                                                  \
     } while (0)
 //普通错误，整体可控，虽然有bug
@@ -73,7 +73,7 @@ namespace MiniMuduo
     {                                                                                       \
         if (MiniMuduo::base::Logger::instance().shouldLog(MiniMuduo::base::LogLevel::ERROR)) \
         {                                                                                   \
-            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::ERROR); \
+            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::ERROR,__FILE__, __LINE__); \
         }                                                                                   \
     } while (0)
 //致命错误，会影响核心功能
@@ -82,6 +82,6 @@ namespace MiniMuduo
     {                                                                                       \
         if (MiniMuduo::base::Logger::instance().shouldLog(MiniMuduo::base::LogLevel::FATAL)) \
         {                                                                                   \
-            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::FATAL); \
+            MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::FATAL,__FILE__, __LINE__); \
         }                                                                                   \
     } while (0)
