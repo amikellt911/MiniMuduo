@@ -37,11 +37,11 @@
   
 项目采用经典的主从多 Reactor 并发模型：
 
-    Main Reactor (主循环): 运行在主线程，通过 Acceptor 专门负责监听和接受新的客户端连接。
+- Main Reactor (主循环): 运行在主线程，通过 Acceptor 专门负责监听和接受新的客户端连接。
 
-    Sub Reactors (从循环): 运行在独立的 I/O 线程池中。Main Reactor 接受新连接后，通过轮询算法将其分发给一个 Sub Reactor。
+- Sub Reactors (从循环): 运行在独立的 I/O 线程池中。Main Reactor 接受新连接后，通过轮询算法将其分发给一个 Sub Reactor。
 
-    线程归属 (one loop per thread): 一个 TcpConnection 的整个生命周期（包括所有 I/O 事件、业务回调）都由同一个 Sub Reactor 线程负责，杜绝了跨线程的锁竞争，最大化地利用了 CPU 缓存局部性，是现代高性能网络服务的基石。
+- 线程归属 (one loop per thread): 一个 TcpConnection 的整个生命周期（包括所有 I/O 事件、业务回调）都由同一个 Sub Reactor 线程负责，杜绝了跨线程的锁竞争，最大化地利用了 CPU 缓存局部性，是现代高性能网络服务的基石。
 
   
 
