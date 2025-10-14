@@ -89,6 +89,7 @@ namespace MiniMuduo {
                     prepend(&be32, sizeof(be32));
                 }
 
+                const char* findCRLFCRLF() const;
 
             private:    
 

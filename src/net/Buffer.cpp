@@ -1,6 +1,7 @@
 #include"MiniMuduo/net/Buffer.h"
 #include<sys/uio.h>
 #include<unistd.h>
+#include<algorithm>
 namespace MiniMuduo
 {
     namespace net
@@ -45,6 +46,16 @@ namespace MiniMuduo
             //retrieve(n);
             //数据流更新的决策应该在handwrite中进行
             return n;
+        }
+
+        const char* Buffer::findCRLFCRLF() const {
+            const char* crlf = "\r\n\r\n";
+            // std::search 可以在一个序列中查找另一个子序列
+            const char* search_start = peek();
+            const char* search_end = begin() + writerIndex_;
+            const char* result = std::search(search_start, search_end, crlf, crlf + 4);
+
+            return result == search_end ? nullptr : result;
         }
     }
 

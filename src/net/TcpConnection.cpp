@@ -56,6 +56,7 @@ namespace MiniMuduo
 
         void TcpConnection::send(const std::string &message)
         {
+            LOG_INFO("TcpConnection::send called, msg size: " + std::to_string(message.size())); // 确认被调用
             if (state_ == kConnected)
             {
                 if (loop_->isInLoopThread())
@@ -72,6 +73,7 @@ namespace MiniMuduo
 
         void TcpConnection::sendInLoop(const void *data, size_t len)
         {
+            LOG_INFO("TcpConnection::sendInLoop called, msg size: " + std::to_string(len));
             size_t written = 0;
             size_t remaining = len;
             bool faultError = false;
@@ -86,6 +88,10 @@ namespace MiniMuduo
                 if (written >= 0)
                 {
                     remaining = len - written;
+                    if(remaining == 0)
+                    {
+                        LOG_INFO("TcpConnection::sendInLoop - write complete in ::write");
+                    }
                     if (remaining == 0 && writeCompleteCallback_)
                     {
                         loop_->queueInLoop(std::bind(writeCompleteCallback_, shared_from_this()));
@@ -114,6 +120,7 @@ namespace MiniMuduo
                 outputBuffer_.append(static_cast<const char *>(data) + written, remaining);
                 if (!channel_->isWriting())
                 {
+                    LOG_INFO("TcpConnection::sendInLoop - enable writing remaining: " + std::to_string(remaining));
                     channel_->enableWriting();
                 }
             }
@@ -258,6 +265,7 @@ namespace MiniMuduo
 
         void TcpConnection::handleWrite()
         {
+            LOG_INFO("TcpConnection::handleWrite");
             if (channel_->isWriting())
             {
                 int savedErrno = 0;

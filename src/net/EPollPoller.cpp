@@ -121,12 +121,12 @@ namespace MiniMuduo
             ::memset(&event, 0, sizeof(event));
             int fd = channel->fd();
             event.events = channel->events();
-                // +++ 调试代码 +++
-                std::cout << "EPollPoller::update: operation=" << operation
-                          << ", channel_ptr=" << static_cast<void*>(channel) // 打印指针地址
-                          << ", channel_fd=" << channel->fd()
-                          << std::endl;
-                // +++++++++++++++
+                // // +++ 调试代码 +++
+                // std::cout << "EPollPoller::update: operation=" << operation
+                //           << ", channel_ptr=" << static_cast<void*>(channel) // 打印指针地址
+                //           << ", channel_fd=" << channel->fd()
+                //           << std::endl;
+                // // +++++++++++++++
 
             event.data.ptr = channel;
             //联合体，把指针内容修改了

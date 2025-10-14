@@ -58,6 +58,7 @@
         "bitset": "cpp",
         "cstring": "cpp",
         "regex": "cpp",
-        "optional": "cpp"
+        "optional": "cpp",
+        "any": "cpp"
     }
 }

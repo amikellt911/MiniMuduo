@@ -42,7 +42,8 @@ target_link_libraries(MiniMuduo PUBLIC Threads::Threads)
 # --- 构建测试程序 (testserver) ---
 
 # 9. 查找测试源文件
-set(TEST_SOURCES test/testserver.cpp) # 直接指定测试文件
+#set(TEST_SOURCES test/testserver.cpp) # 直接指定测试文件
+set(TEST_SOURCES test/testqps.cpp)
 
 # 10. 创建可执行文件
 add_executable(testserver ${TEST_SOURCES}) # 可执行文件目标名称 testserver

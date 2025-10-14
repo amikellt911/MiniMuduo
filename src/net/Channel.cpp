@@ -30,6 +30,15 @@ namespace MiniMuduo{
         void Channel::handleEvent(MiniMuduo::base::Timestamp receiveTime){
             if(tied_){
                 std::shared_ptr<void> guard = tie_.lock();
+                //为什么要处理这种情况？明明channel已经被tcpconnection的unique_ptr所拥有，生命周期一样，为什么？
+                //因为要预发跨连接执法的问题
+                //可能前一个channel发现了什么，处理了，决定将另一个连接断开。
+                //但是这个连接断开，不是立即断开，他会queueInLoop，到下一轮循环中断开。
+                //但是那个连接正好也被epoll捕捉，活跃事件有channel的裸指针
+                //算是一种生命周期的双保险
+                //防止channel依赖的回调对象上下文还在
+                //其实channel本身因为生命周期通过unique_ptr管理，同生同死，不会出现这个问题
+                //但是在某些情况，可能出现连接死了，但是channel还活着的情况。
                 if(guard){
                     handleEventWithGuard(receiveTime);
                 }
