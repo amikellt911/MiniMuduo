@@ -57,6 +57,16 @@ namespace MiniMuduo
 
             return result == search_end ? nullptr : result;
         }
+
+        const char* Buffer::findCRLF() const {
+            const char* crlf = "\r\n";
+            // std::search 可以在一个序列中查找另一个子序列
+            const char* search_start = peek();
+            const char* search_end = begin() + writerIndex_;
+            const char* result = std::search(search_start, search_end, crlf, crlf + 2);
+
+            return result == search_end ? nullptr : result;
+        }
     }
 
 }

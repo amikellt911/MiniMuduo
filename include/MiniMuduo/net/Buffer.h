@@ -91,6 +91,8 @@ namespace MiniMuduo {
 
                 const char* findCRLFCRLF() const;
 
+                const char* findCRLF() const;
+
             private:    
 
                 char* begin(){return &*buffer_.begin();}
