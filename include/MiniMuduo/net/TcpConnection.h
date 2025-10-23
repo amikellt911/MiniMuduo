@@ -61,6 +61,10 @@ namespace MiniMuduo
                 void connectDestroyed();
                 void setIdleTimeout(double seconds);
                 void cancelIdleTimeout();
+
+                void setContext(std::any context) {context_ = std::move(context);}
+                const std::any &getContext() const { return context_; }
+                std::any* getMutableContext() { return &context_; }
             private:
                 enum StateE
                 {
