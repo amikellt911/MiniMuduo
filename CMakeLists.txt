@@ -39,31 +39,31 @@ target_include_directories(MiniMuduo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 find_package(Threads REQUIRED)
 target_link_libraries(MiniMuduo PUBLIC Threads::Threads)
 
-# --- 构建测试程序 (testserver) ---
+# # --- 构建测试程序 (testserver) ---
 
-# 9. 查找测试源文件
-#set(TEST_SOURCES test/testserver.cpp) # 直接指定测试文件
-set(TEST_SOURCES test/testqps.cpp)
+# # 9. 查找测试源文件
+# #set(TEST_SOURCES test/testserver.cpp) # 直接指定测试文件
+# set(TEST_SOURCES test/testqps.cpp)
 
-# 10. 创建可执行文件
-add_executable(testserver ${TEST_SOURCES}) # 可执行文件目标名称 testserver
+# # 10. 创建可执行文件
+# add_executable(testserver ${TEST_SOURCES}) # 可执行文件目标名称 testserver
 
-# 11. 链接可执行文件到 MiniMuduo 库
-# testserver 需要使用 MiniMuduo 库
-target_link_libraries(testserver PRIVATE MiniMuduo)
-# 注意: 因为 MiniMuduo 库已经 PUBLIC 链接了 Threads::Threads,
-# CMake 会自动处理 testserver 对线程库的间接依赖，
-# 通常不需要在这里再次链接 Threads::Threads
+# # 11. 链接可执行文件到 MiniMuduo 库
+# # testserver 需要使用 MiniMuduo 库
+# target_link_libraries(testserver PRIVATE MiniMuduo)
+# # 注意: 因为 MiniMuduo 库已经 PUBLIC 链接了 Threads::Threads,
+# # CMake 会自动处理 testserver 对线程库的间接依赖，
+# # 通常不需要在这里再次链接 Threads::Threads
 
-# 可选: 添加编译选项
-target_compile_options(MiniMuduo PRIVATE $<$<CONFIG:Debug>:-g>)
-target_compile_options(testserver PRIVATE $<$<CONFIG:Debug>:-g>)
-target_compile_options(MiniMuduo PRIVATE $<$<CONFIG:Release>:-O2>)
-target_compile_options(testserver PRIVATE $<$<CONFIG:Release>:-O2>)
+# # 可选: 添加编译选项
+# target_compile_options(MiniMuduo PRIVATE $<$<CONFIG:Debug>:-g>)
+# target_compile_options(testserver PRIVATE $<$<CONFIG:Debug>:-g>)
+# target_compile_options(MiniMuduo PRIVATE $<$<CONFIG:Release>:-O2>)
+# target_compile_options(testserver PRIVATE $<$<CONFIG:Release>:-O2>)
 
-# 可选: 输出信息
-message(STATUS "Configuring MiniMuduo Project")
-message(STATUS "Library sources: ${LIB_SOURCES}")
-message(STATUS "Test sources: ${TEST_SOURCES}")
+# # 可选: 输出信息
+# message(STATUS "Configuring MiniMuduo Project")
+# message(STATUS "Library sources: ${LIB_SOURCES}")
+# message(STATUS "Test sources: ${TEST_SOURCES}")
 
 # --- End of CMakeLists.txt ---
