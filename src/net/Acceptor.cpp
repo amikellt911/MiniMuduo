@@ -32,6 +32,7 @@ namespace MiniMuduo{
             acceptSocket_.setReuseAddr(true);
             //让多个套接字可以连接同一端口，实现内核层面负载均衡
             //准确来说是多acceptor模式，如果出现单个acceptor面对新连接出现性能瓶颈的情况
+            if(reuseport)
             acceptSocket_.setReusePort(true);
             acceptSocket_.bindAddress(listenAddr);
             acceptChannel_.setReadCallback(std::bind(&Acceptor::handleRead,this));
