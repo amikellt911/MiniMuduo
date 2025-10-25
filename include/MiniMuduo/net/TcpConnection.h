@@ -37,6 +37,7 @@ namespace MiniMuduo
                 const InetAddress &peerAddress() const {return peerAddr_;}
                 bool connected() const { return state_ == kConnected; }
                 
+                void send(MiniMuduo::net::Buffer &&buf);
                 void send(const std::string &message);
                 void sendFile(int fileDescriptor,off_t offset,size_t size);
                 //关闭写端

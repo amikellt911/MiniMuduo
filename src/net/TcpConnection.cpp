@@ -71,6 +71,25 @@ namespace MiniMuduo
             }
         }
 
+        void TcpConnection::send(MiniMuduo::net::Buffer &&buf)
+        {
+            if (state_ == kConnected)
+            {
+                if (loop_->isInLoopThread())
+                {
+                    outputBuffer_.append(std::move(buf));
+                    channel_->enableWriting();
+                }
+                else
+                {
+                    loop_->runInLoop([this,newbuf=std::move(buf)](){
+                        outputBuffer_.append(std::move(newbuf));
+                        channel_->enableWriting();
+                    });
+                }
+            }
+        }
+
         void TcpConnection::sendInLoop(const void *data, size_t len)
         {
             LOG_INFO("TcpConnection::sendInLoop called, msg size: " + std::to_string(len));
