@@ -48,7 +48,7 @@ namespace MiniMuduo
         //,pollReturnTime_(Timestamp::now())
         {
             std::string msg = "EventLoop created " + std::to_string(threadId_);
-            LOG_DEBUG(msg);
+            //LOG_DEBUG(msg);
             if (t_LoopInThisThread)
             {
                 LOG_FATAL("Another EventLoop " + std::to_string(t_LoopInThisThread->threadId_) + " exists in this thread " + std::to_string(threadId_));
@@ -84,7 +84,7 @@ namespace MiniMuduo
             looping_ = true;
             quit_ = false;
 
-            LOG_INFO("EventLoop " + std::to_string(threadId_) + " start looping");
+            ////LOG_INFO("EventLoop " + std::to_string(threadId_) + " start looping");
             while (!quit_)
             {
                 activeChannels_.clear();
@@ -97,7 +97,7 @@ namespace MiniMuduo
                 eventHandling_ = false;
                 doPendingFunctors();
             }
-            LOG_INFO("EventLoop " + std::to_string(threadId_) + " stop looping");
+            //LOG_INFO("EventLoop " + std::to_string(threadId_) + " stop looping");
             looping_ = false;
         }
 

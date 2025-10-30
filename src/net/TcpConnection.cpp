@@ -45,18 +45,18 @@ namespace MiniMuduo
             channel_->setErrorCallback(
                 std::bind(&TcpConnection::handleError, this));
 
-            LOG_INFO(std::string("TcpConnection::ctor - fd = ") + std::to_string(sockfd));
+            //LOG_INFO(std::string("TcpConnection::ctor - fd = ") + std::to_string(sockfd));
             socket_->setKeepAlive(true);
         }
 
         TcpConnection::~TcpConnection()
         {
-            LOG_INFO(std::string("TcpConnection::dtor - fd = ") + std::to_string(channel_->fd()));
+            //LOG_INFO(std::string("TcpConnection::dtor - fd = ") + std::to_string(channel_->fd()));
         }
 
         void TcpConnection::send(const std::string &message)
         {
-            LOG_INFO("TcpConnection::send called, msg size: " + std::to_string(message.size())); // 确认被调用
+            //LOG_INFO("TcpConnection::send called, msg size: " + std::to_string(message.size())); // 确认被调用
             if (state_ == kConnected)
             {
                 if (loop_->isInLoopThread())
@@ -92,7 +92,7 @@ namespace MiniMuduo
 
         void TcpConnection::sendInLoop(const void *data, size_t len)
         {
-            LOG_INFO("TcpConnection::sendInLoop called, msg size: " + std::to_string(len));
+            //LOG_INFO("TcpConnection::sendInLoop called, msg size: " + std::to_string(len));
             size_t written = 0;
             size_t remaining = len;
             bool faultError = false;
@@ -109,7 +109,7 @@ namespace MiniMuduo
                     remaining = len - written;
                     if(remaining == 0)
                     {
-                        LOG_INFO("TcpConnection::sendInLoop - write complete in ::write");
+                        //LOG_INFO("TcpConnection::sendInLoop - write complete in ::write");
                     }
                     if (remaining == 0 && writeCompleteCallback_)
                     {
@@ -139,7 +139,7 @@ namespace MiniMuduo
                 outputBuffer_.append(static_cast<const char *>(data) + written, remaining);
                 if (!channel_->isWriting())
                 {
-                    LOG_INFO("TcpConnection::sendInLoop - enable writing remaining: " + std::to_string(remaining));
+                    //LOG_INFO("TcpConnection::sendInLoop - enable writing remaining: " + std::to_string(remaining));
                     channel_->enableWriting();
                 }
             }
@@ -284,7 +284,7 @@ namespace MiniMuduo
 
         void TcpConnection::handleWrite()
         {
-            LOG_INFO("TcpConnection::handleWrite");
+            //LOG_INFO("TcpConnection::handleWrite");
             if (channel_->isWriting())
             {
                 int savedErrno = 0;
@@ -325,7 +325,7 @@ namespace MiniMuduo
 
         void TcpConnection::handleClose()
         {
-            LOG_INFO(std::string("TcpConnection fd=")+std::to_string(channel_->fd())+" is closed");
+            //LOG_INFO(std::string("TcpConnection fd=")+std::to_string(channel_->fd())+" is closed");
             setState(kDisconnected);
             channel_->disableAll();
             if(idleTimerId_)
@@ -369,7 +369,7 @@ namespace MiniMuduo
                 TcpConnectionPtr self = weakSelf.lock();
                 if (self) {
                     // 如果连接还存活，就执行关闭操作
-                    LOG_INFO("Connection " +self->name() + " timed out, shutting down.");
+                    //LOG_INFO("Connection " +self->name() + " timed out, shutting down.");
                     self->shutdown(); 
                 }
             };

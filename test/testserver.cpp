@@ -32,11 +32,11 @@ class EchoServer{
         {
             if(conn->connected())
             {
-                LOG_INFO(std::string("Connection Up") + conn->peerAddress().toIpPort());
+                //LOG_INFO(std::string("Connection Up") + conn->peerAddress().toIpPort());
             }
             else 
             {
-                LOG_INFO(std::string("Connection Down") + conn->peerAddress().toIpPort());
+                //LOG_INFO(std::string("Connection Down") + conn->peerAddress().toIpPort());
             }
         }
         void onMessage(const MiniMuduo::net::TcpConnectionPtr &conn,MiniMuduo::net::Buffer *buffer,MiniMuduo::base::Timestamp receiveTime)

@@ -32,11 +32,11 @@ class EchoServer{
         {
             if(conn->connected())
             {
-                LOG_INFO(std::string("Connection Up") + conn->peerAddress().toIpPort());
+                //LOG_INFO(std::string("Connection Up") + conn->peerAddress().toIpPort());
             }
             else 
             {
-                LOG_INFO(std::string("Connection Down") + conn->peerAddress().toIpPort());
+                //LOG_INFO(std::string("Connection Down") + conn->peerAddress().toIpPort());
             }
         }
         void onMessage(const MiniMuduo::net::TcpConnectionPtr &conn,MiniMuduo::net::Buffer *buffer,MiniMuduo::base::Timestamp receiveTime)
@@ -52,7 +52,7 @@ class EchoServer{
             // conn->send(response);
             // LOG_ERROR("OnMessage Finished");
             // conn->shutdown();
-            // LOG_INFO("Shutdown initiated.");
+            // //LOG_INFO("Shutdown initiated.");
             // 使用一个循环来处理所有可能在一个批次中到达的请求
             while (true) 
             {
@@ -77,7 +77,7 @@ class EchoServer{
                 // 【重要】从 Buffer 中取走我们刚刚处理完的这个请求。
                 buffer->retrieve(request_len);
 
-                LOG_INFO ("Received one complete request:\n" +request_str);
+                //LOG_INFO ("Received one complete request:\n" +request_str);
 
                 // 4. 构造并发送响应。
                 //    对于长连接，HTTP/1.1 协议要求响应头里包含 Connection: Keep-Alive

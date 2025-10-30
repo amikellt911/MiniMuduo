@@ -70,7 +70,7 @@ namespace MiniMuduo
             // 只在mainloop进行，不需要设置为atomic_int
             ++nextConnId_;
             std::string connName = name_ + buf;
-            LOG_INFO(std::string("TcpServer::newConnection - ") + connName + " from " + peerAddr.toIpPort());
+            //LOG_INFO(std::string("TcpServer::newConnection - ") + connName + " from " + peerAddr.toIpPort());
             sockaddr_in local;
             ::memset(&local, 0, sizeof local);
             socklen_t addrlen = sizeof local;
@@ -98,7 +98,7 @@ namespace MiniMuduo
 
         void TcpServer::removeConnectionInLoop(const TcpConnectionPtr &conn)
         {
-            LOG_INFO(std::string("TcpServer::removeConnectionInLoop - ") + conn->name());
+            //LOG_INFO(std::string("TcpServer::removeConnectionInLoop - ") + conn->name());
             connections_.erase(conn->name());
             EventLoop *ioLoop = conn->getLoop();
             //runinloop因为在队列中可能立刻执行，但是此时loop可能正在遍历activeChannel

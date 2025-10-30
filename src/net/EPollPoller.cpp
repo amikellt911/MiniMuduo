@@ -33,14 +33,14 @@ namespace MiniMuduo
 
         MiniMuduo::base::Timestamp EPollPoller::poll(int timeoutMs, ChannelList *activeChannels)
         {
-            LOG_DEBUG(std::string("poll ") + "fd total count:" + std::to_string(channels_.size()));
+            //LOG_DEBUG(std::string("poll ") + "fd total count:" + std::to_string(channels_.size()));
 
             int numEvents = ::epoll_wait(epollfd_, &*events_.begin(), static_cast<int>(events_.size()), timeoutMs);
             int saveErrno = errno;
             MiniMuduo::base::Timestamp receiveTime(MiniMuduo::base::Timestamp::now());
             if (numEvents > 0)
             {
-                LOG_INFO(std::string("EPollPoller::poll: ") + std::to_string(numEvents) + " events happened");
+                ////LOG_INFO(std::string("EPollPoller::poll: ") + std::to_string(numEvents) + " events happened");
                 fillActiveChannels(numEvents, activeChannels);
                 if (numEvents == events_.size())
                 {
@@ -49,7 +49,7 @@ namespace MiniMuduo
             }
             else if (numEvents == 0)
             {
-                LOG_DEBUG(std::string("EPollPoller::poll: ") + "timeout");
+                //LOG_DEBUG(std::string("EPollPoller::poll: ") + "timeout");
             }
             else
             {
@@ -73,7 +73,7 @@ namespace MiniMuduo
         void EPollPoller::updateChannel(Channel *channel)
         {
             const int index = channel->index();
-            LOG_DEBUG("EPollPoller::updateChannel fd=" + std::to_string(channel->fd()) + " events=" + std::to_string(channel->events()));
+            //LOG_DEBUG("EPollPoller::updateChannel fd=" + std::to_string(channel->fd()) + " events=" + std::to_string(channel->events()));
             if (index == kNew || index == kDeleted)
             {
                 int fd = channel->fd();
@@ -106,7 +106,7 @@ namespace MiniMuduo
         {
             int fd = channel->fd();
             int index = channel->index();
-            LOG_DEBUG("fd=" + std::to_string(fd) + " events=" + std::to_string(channel->events()));
+            //LOG_DEBUG("fd=" + std::to_string(fd) + " events=" + std::to_string(channel->events()));
             channels_.erase(fd);
             if (index == kAdded)
             {
