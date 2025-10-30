@@ -114,6 +114,8 @@ namespace MiniMuduo
                 double idleTimeout_;
                 //请求接受处理上下文，协议切换
                 std::any context_;
+
+                bool isTimeout_;
         };
     } 
 }

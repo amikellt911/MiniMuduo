@@ -221,6 +221,7 @@ namespace MiniMuduo
 
         void EventLoop::cancelTimer(int64_t timerId)
         {
+            //LOG_INFO("cancel timer " + std::to_string(timerId));
             //有竞态问题
             //因为runinloop需要时间，可能传入正好，timefd响应了
             //但是这种问题应该归于用户，因为他太慢了，理清责任边界

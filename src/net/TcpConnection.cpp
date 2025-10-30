@@ -328,7 +328,7 @@ namespace MiniMuduo
             //LOG_INFO(std::string("TcpConnection fd=")+std::to_string(channel_->fd())+" is closed");
             setState(kDisconnected);
             channel_->disableAll();
-            if(idleTimerId_)
+            if(idleTimerId_&& !idleTimerId_)
             {
                 loop_->cancelTimer(*idleTimerId_);
                 idleTimerId_.reset();
@@ -370,6 +370,7 @@ namespace MiniMuduo
                 if (self) {
                     // 如果连接还存活，就执行关闭操作
                     //LOG_INFO("Connection " +self->name() + " timed out, shutting down.");
+                    self->isTimeout_=true;
                     self->shutdown(); 
                 }
             };
