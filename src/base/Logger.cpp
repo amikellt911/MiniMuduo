@@ -52,7 +52,7 @@ namespace MiniMuduo{
             ss << "ThreadID:[" << CurrentThread::tid() << "] ";
             threadId = ss.str();
             std::string logMessage =" [" + levelStr + "] : [" +std::string(file) +":"+ std::to_string(line) +"] : [" + Timestamp::now().toString() + "] : " + threadId  + msg + "\n";
-            //std::cout << logMessage;
+            std::cout << logMessage;
             logFile_ << logMessage;
             logFile_.flush();
             logLock_.clear(std::memory_order_release);
