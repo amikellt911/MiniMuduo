@@ -4,6 +4,7 @@
 #include "MiniMuduo/base/Timestamp.h"
 #include <thread>
 #include <sstream>
+#include <filesystem>
 #include "MiniMuduo/base/CurrentThread.h"
 namespace MiniMuduo{    
     namespace base{
@@ -11,6 +12,10 @@ namespace MiniMuduo{
         globalLogLevel_ = LogLevel::INFO;
         logLock_.clear();
         logFilePath_ = "../build/log/";
+        if(!std::filesystem::exists(logFilePath_))
+        {
+            std::filesystem::create_directories(logFilePath_);
+        }
         logFileName_ = "log_" + Timestamp::now().toString() + ".txt";
         logFile_.open(logFilePath_ + logFileName_, std::ios::app);
         if(!logFile_.is_open()){
