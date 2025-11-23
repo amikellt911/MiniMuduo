@@ -85,3 +85,4 @@ namespace MiniMuduo
             MiniMuduo::base::Logger::instance().log(msg, MiniMuduo::base::LogLevel::FATAL,__FILE__, __LINE__); \
         }                                                                                   \
     } while (0)
+    
